@@ -7,14 +7,18 @@ namespace AssuncaoDistribution.Models
 {
     public class UnitsMeasures
     {
-        public int CodUnit { get; set; }
+        public int Id { get; set; }
         public string AbbreviationUnit { get; set; }
         public string Description { get; set; }
 
 
+        public UnitsMeasures()
+        {
+        }
+
         public UnitsMeasures (int codUnit, string abbreviationUnit, string description)
         {
-            CodUnit = codUnit;
+            Id = codUnit;
             AbbreviationUnit = abbreviationUnit;
             Description = description;
         }

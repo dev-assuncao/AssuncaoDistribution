@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using AssuncaoDistribution.Models;
 
+
 namespace AssuncaoDistribution.Data
 {
     public class AssuncaoDistributionContext : DbContext
@@ -13,13 +14,13 @@ namespace AssuncaoDistribution.Data
         {
         }
 
-        DbSet<Client> Clients { get; set; }
-        DbSet<ItemsOrderSale> ItemsOrderSales { get; set; }
-        DbSet<Products> Products { get; set; }
-        DbSet<Provider> Providers { get; set; }
-        DbSet<PurchaseOrder> PurchaseOrders { get; set; }
-        DbSet<PurchaseOrderItems> PurchaseOrderItems { get; set; }
-        DbSet<SalesOrder> SalesOrders { get; set; }
-        DbSet<UnitsMeasures> UnitsMeasures { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<ItemsOrderSale> ItemsOrderSales { get; set; }
+        public DbSet<Products> Products { get; set; }
+        public DbSet<Provider> Providers { get; set; }
+        public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
+        public DbSet<PurchaseOrderItems> PurchaseOrderItems { get; set; }
+        public DbSet<SalesOrder> SalesOrders { get; set; }
+        public DbSet<UnitsMeasures> UnitsMeasures { get; set; }
     }
 }

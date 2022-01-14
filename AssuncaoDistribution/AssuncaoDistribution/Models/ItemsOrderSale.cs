@@ -2,25 +2,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace AssuncaoDistribution.Models
 {
     public class ItemsOrderSale
     {
 
-        public int CodItemSale { get; set; }
-        public SalesOrder CodOrderSale { get; set; }
-        public Products CodProd { get; set; }
+        public int Id { get; set; }
         public int AmountOrder { get; set; }
         public double PriceOrder { get; set; }
+        public SalesOrder Sales { get; set; }
+        public Products Prod { get; set; }
 
-        public ItemsOrderSale (int codItemSale, SalesOrder codOrderSale, Products codProd, int amount, double price)
+        [ForeignKey("Prod")]
+        public int ProdId { get; set; }
+        [ForeignKey("Sales")]
+        public int SalesId { get; set; }
+
+        public ItemsOrderSale()
         {
-            CodItemSale = codItemSale;
-            CodOrderSale = codOrderSale;
-            CodProd = codProd;
-            AmountOrder = amount;
-            PriceOrder = price;
+        }
+
+        public ItemsOrderSale(int idItemSale, int amountOrder, double priceOrder)
+        {
+            Id = idItemSale;
+            AmountOrder = amountOrder;
+            PriceOrder = priceOrder;
         }
     }
 }
