@@ -16,13 +16,14 @@ namespace AssuncaoDistribution.Models
         public string City { get; set; }
         public string Email { get; set; }
         public int Phone { get; set; }
+        public string Uf { get; set; }
         public long CnpjOrCpf { get; set; }
 
         public Client()
         {
         }
 
-        public Client (int idCli, string name, string contactCli, DateTime birthday, string address, int cep, string city, string email, int phone, long cnpjOrCpf)
+        public Client (int idCli, string name, string contactCli, DateTime birthday, string address, int cep, string city, string email, int phone, string uf, long cnpjOrCpf)
         {
             Id = idCli;
             Name = name;
@@ -31,6 +32,7 @@ namespace AssuncaoDistribution.Models
             Address = address;
             Cep = cep;
             City = city;
+            Uf = uf;
             Email = email;
             Phone = phone;
             CnpjOrCpf = cnpjOrCpf;
