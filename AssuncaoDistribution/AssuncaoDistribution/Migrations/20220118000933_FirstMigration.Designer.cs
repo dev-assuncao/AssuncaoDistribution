@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AssuncaoDistribution.Migrations
 {
     [DbContext(typeof(AssuncaoDistributionContext))]
-    [Migration("20220114011355_FirstMigration")]
+    [Migration("20220118000933_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,8 +37,8 @@ namespace AssuncaoDistribution.Migrations
                     b.Property<string>("City")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CnpjOrCpf")
-                        .HasColumnType("int");
+                    b.Property<long>("CnpjOrCpf")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("ContactCli")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -51,6 +51,9 @@ namespace AssuncaoDistribution.Migrations
 
                     b.Property<int>("Phone")
                         .HasColumnType("int");
+
+                    b.Property<string>("Uf")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -93,15 +96,19 @@ namespace AssuncaoDistribution.Migrations
                     b.Property<int>("AmountProd")
                         .HasColumnType("int");
 
+                    b.Property<int>("Measures")
+                        .HasColumnType("int");
+
                     b.Property<int>("MeasuresId")
                         .HasColumnType("int");
+
+                    b.Property<string>("NameProd")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<double>("PriceProd")
                         .HasColumnType("double");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MeasuresId");
 
                     b.ToTable("Products");
                 });
@@ -115,14 +122,14 @@ namespace AssuncaoDistribution.Migrations
                     b.Property<string>("AddresProv")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CepProv")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<int>("CepProv")
+                        .HasColumnType("int");
 
                     b.Property<string>("CityProv")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CnpjOrCpfProv")
-                        .HasColumnType("int");
+                    b.Property<long>("CnpjOrCpfProv")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Contact")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -144,6 +151,9 @@ namespace AssuncaoDistribution.Migrations
 
                     b.Property<int>("PhoneProv")
                         .HasColumnType("int");
+
+                    b.Property<double>("Portage")
+                        .HasColumnType("double");
 
                     b.HasKey("Id");
 
@@ -208,7 +218,10 @@ namespace AssuncaoDistribution.Migrations
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
 
-                    b.Property<double>("PriceOrder")
+                    b.Property<DateTime>("DateOrder")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<double>("PriceSale")
                         .HasColumnType("double");
 
                     b.HasKey("Id");
@@ -216,23 +229,6 @@ namespace AssuncaoDistribution.Migrations
                     b.HasIndex("ClientId");
 
                     b.ToTable("SalesOrders");
-                });
-
-            modelBuilder.Entity("AssuncaoDistribution.Models.UnitsMeasures", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("AbbreviationUnit")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UnitsMeasures");
                 });
 
             modelBuilder.Entity("AssuncaoDistribution.Models.ItemsOrderSale", b =>
@@ -246,15 +242,6 @@ namespace AssuncaoDistribution.Migrations
                     b.HasOne("AssuncaoDistribution.Models.SalesOrder", "Sales")
                         .WithMany()
                         .HasForeignKey("SalesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("AssuncaoDistribution.Models.Products", b =>
-                {
-                    b.HasOne("AssuncaoDistribution.Models.UnitsMeasures", "Measures")
-                        .WithMany()
-                        .HasForeignKey("MeasuresId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

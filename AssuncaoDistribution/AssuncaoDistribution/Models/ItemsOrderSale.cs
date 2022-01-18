@@ -25,11 +25,13 @@ namespace AssuncaoDistribution.Models
         {
         }
 
-        public ItemsOrderSale(int idItemSale, int amountOrder, double priceOrder)
+        public ItemsOrderSale(int idItemSale, int amountOrder, double priceOrder, SalesOrder orderSale, Products products)
         {
             Id = idItemSale;
             AmountOrder = amountOrder;
             PriceOrder = priceOrder;
+            Sales = orderSale;
+            Prod = products;
         }
     }
 }

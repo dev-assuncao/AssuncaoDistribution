@@ -22,11 +22,29 @@ namespace AssuncaoDistribution.Migrations
                     City = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     Phone = table.Column<int>(nullable: false),
-                    CnpjOrCpf = table.Column<int>(nullable: false)
+                    Uf = table.Column<string>(nullable: true),
+                    CnpjOrCpf = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Clients", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    NameProd = table.Column<string>(nullable: true),
+                    Measures = table.Column<int>(nullable: false),
+                    AmountProd = table.Column<int>(nullable: false),
+                    PriceProd = table.Column<double>(nullable: false),
+                    MeasuresId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -37,33 +55,20 @@ namespace AssuncaoDistribution.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CorporateName = table.Column<string>(nullable: true),
                     FantasyName = table.Column<string>(nullable: true),
-                    CnpjOrCpfProv = table.Column<int>(nullable: false),
+                    CnpjOrCpfProv = table.Column<long>(nullable: false),
                     AddresProv = table.Column<string>(nullable: true),
                     DistrictProv = table.Column<string>(nullable: true),
-                    CepProv = table.Column<string>(nullable: true),
+                    CepProv = table.Column<int>(nullable: false),
                     CityProv = table.Column<string>(nullable: true),
                     PhoneProv = table.Column<int>(nullable: false),
                     Fax = table.Column<int>(nullable: false),
                     EmailProv = table.Column<string>(nullable: true),
-                    Contact = table.Column<string>(nullable: true)
+                    Contact = table.Column<string>(nullable: true),
+                    Portage = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Providers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UnitsMeasures",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    AbbreviationUnit = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UnitsMeasures", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -72,7 +77,8 @@ namespace AssuncaoDistribution.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    PriceOrder = table.Column<double>(nullable: false),
+                    DateOrder = table.Column<DateTime>(nullable: false),
+                    PriceSale = table.Column<double>(nullable: false),
                     ClientId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -103,27 +109,6 @@ namespace AssuncaoDistribution.Migrations
                         name: "FK_PurchaseOrders_Providers_ProviderId",
                         column: x => x.ProviderId,
                         principalTable: "Providers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Products",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    AmountProd = table.Column<int>(nullable: false),
-                    PriceProd = table.Column<double>(nullable: false),
-                    MeasuresId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Products", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Products_UnitsMeasures_MeasuresId",
-                        column: x => x.MeasuresId,
-                        principalTable: "UnitsMeasures",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -195,11 +180,6 @@ namespace AssuncaoDistribution.Migrations
                 column: "SalesId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_MeasuresId",
-                table: "Products",
-                column: "MeasuresId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_PurchaseOrderItems_ProdId",
                 table: "PurchaseOrderItems",
                 column: "ProdId");
@@ -239,9 +219,6 @@ namespace AssuncaoDistribution.Migrations
 
             migrationBuilder.DropTable(
                 name: "Clients");
-
-            migrationBuilder.DropTable(
-                name: "UnitsMeasures");
 
             migrationBuilder.DropTable(
                 name: "Providers");

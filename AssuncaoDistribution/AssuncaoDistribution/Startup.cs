@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using AssuncaoDistribution.Data;
+using AssuncaoDistribution.Services;
 using Pomelo.EntityFrameworkCore.MySql;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -28,16 +29,17 @@ namespace AssuncaoDistribution
         {
             services.AddControllersWithViews();
 
-
+            services.AddScoped<SeedingService>();
             services.AddDbContext<AssuncaoDistributionContext>(options => options.UseMySql(Configuration.GetConnectionString("AssuncaoDistributionContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SeedingService seedingService)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                seedingService.Seed();
             }
             else
             {

@@ -10,20 +10,24 @@ namespace AssuncaoDistribution.Models
     {
         public int Id { get; set; }
         public Client Clients { get; set; }
-        public double PriceOrder { get; set; }
+        public DateTime DateOrder { get; set; }
+
+        public double PriceSale { get; set; }
 
         [ForeignKey("Clients")]
         public int ClientId { get; set; }
 
+        
         public SalesOrder()
         {
         }
 
-        public SalesOrder (int codOrder, Client codClient, double priceOrder)
+        public SalesOrder (int codOrder, Client client, DateTime date, double priceSale)
         {
             Id = codOrder;
-            Clients = codClient;
-            PriceOrder = priceOrder;
+            Clients = client;
+            DateOrder = date;
+            PriceSale = priceSale;
         }
 
     }

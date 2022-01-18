@@ -28,5 +28,10 @@ namespace AssuncaoDistribution.Models
             PurchDate = purchDate;
             PriceOrder = priceOrder;
         }
+
+        public double PricePerOrder(int amount)
+        {
+            return amount * PriceOrder; 
+        }
     }
 }

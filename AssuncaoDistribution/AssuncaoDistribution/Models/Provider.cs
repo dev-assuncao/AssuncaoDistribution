@@ -10,21 +10,22 @@ namespace AssuncaoDistribution.Models
         public int Id { get; set; }
         public string CorporateName { get; set; }
         public string FantasyName { get; set; }
-        public int CnpjOrCpfProv { get; set; }
+        public long CnpjOrCpfProv { get; set; }
         public string AddresProv { get; set; }
         public string DistrictProv { get; set; }
-        public string CepProv { get; set; }
+        public int CepProv { get; set; }
         public string CityProv { get; set; }
         public int PhoneProv { get; set; }
         public int Fax { get; set; }
         public string EmailProv { get; set; }
         public string Contact { get; set; }
+        public double Portage { get; set; }
 
         public Provider()
         {
         }
 
-        public Provider(int codProv, string corporateName, string fantasyName, int cnpjOrCpfProv, string addresProv, string districtProv, string cepProv, string cityProv, int phoneProv, int fax, string emailProv, string contact)
+        public Provider(int codProv, string corporateName, string fantasyName, long cnpjOrCpfProv, string addresProv, string districtProv, int cepProv, string cityProv, int phoneProv, int fax, string emailProv, string contact, double portage)
         {
             Id = codProv;
             CorporateName = corporateName;
@@ -38,6 +39,7 @@ namespace AssuncaoDistribution.Models
             Fax = fax;
             EmailProv = emailProv;
             Contact = contact;
+            Portage = portage;
         }
 
 
