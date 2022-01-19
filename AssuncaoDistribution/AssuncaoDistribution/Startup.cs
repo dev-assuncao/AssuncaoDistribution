@@ -30,6 +30,7 @@ namespace AssuncaoDistribution
             services.AddControllersWithViews();
 
             services.AddScoped<SeedingService>();
+            services.AddScoped<ProductServices>();
             services.AddDbContext<AssuncaoDistributionContext>(options => options.UseMySql(Configuration.GetConnectionString("AssuncaoDistributionContext")));
         }
 

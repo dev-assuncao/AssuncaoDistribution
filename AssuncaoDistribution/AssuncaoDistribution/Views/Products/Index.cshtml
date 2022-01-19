@@ -1,5 +1,49 @@
-﻿@{
+﻿@model IEnumerable<Products>
+
+
+@{
     ViewData["Title"] = "Products";
 }
 
-<h1> Products </h1>
+<h1> Products <a asp-action="Create" class="btn bg-success text-white btn-sm"> Create </a> </h1>
+
+    
+
+
+
+<div class="row col-lg-auto">
+    <br/>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Id)</th>
+                <th>@Html.DisplayNameFor(model => model.NameProd)</th>
+                <th>@Html.DisplayNameFor(model => model.Measures)</th>
+                <th>@Html.DisplayNameFor(model => model.AmountProd)</th>
+                <th>@Html.DisplayNameFor(model => model.PriceProd)</th>              
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Products product in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(Model => product.Id)</td>
+                    <td>@Html.DisplayFor(Model => product.NameProd)</td>
+                    <td>@Html.DisplayFor(Model => product.Measures)</td>
+                    <td>@Html.DisplayFor(Model => product.AmountProd)</td>
+                    <td>@Html.DisplayFor(Model => product.PriceProd)</td>
+
+                    <td>
+                        <a asp-action="Edit" class="btn bg-primary text-white btn-sm" asp-route-id="@product.Id"> Edit </a>
+                        <a asp-action="Details" class="btn bg-primary text-white btn-sm" asp-route-id="@product.Id"> Details </a>
+                        <a asp-action="Delete" class="btn bg-danger text-white btn-sm" asp-route-id="@product.Id"> Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+
+</div>
