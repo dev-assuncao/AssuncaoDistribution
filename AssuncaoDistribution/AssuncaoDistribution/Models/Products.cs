@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace AssuncaoDistribution.Models
 {
     public class Products
     {
         public int Id { get; set; }
+
+        [Display(Name = "Product Name")]
         public string NameProd { get; set; }
         public UnitsMeasures Measures{ get; set; }
+
+        [Display(Name = "Amount")]
         public int AmountProd { get; set; }
+
+        [Display(Name = "Price")]
+   
+        [DisplayFormat()]
         public double PriceProd { get; set; }
 
         [ForeignKey("Measures")]
