@@ -86,5 +86,21 @@ namespace AssuncaoDistribution.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
+        public IActionResult Details(int? id)
+        {
+            var hasProduct = _productServices.HasProduct(id.Value);
+
+            if(hasProduct)
+            {
+                var product = _productServices.FindProduct(id.Value);
+
+                return View(product);
+            }
+            else
+            {
+                throw new Exception("Product not found in database");
+            }
+        }
     }
 }

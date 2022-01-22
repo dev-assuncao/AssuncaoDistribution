@@ -1,0 +1,45 @@
+﻿@model AssuncaoDistribution.Models.Products;
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    @{
+        ViewData["Title"] = "Details";
+    }
+</head>
+
+
+<body>
+
+    <h1>Details of Product:  @Model.NameProd </h1>
+
+    <div class="row col-6">
+        <dl class="dl-horizontal">
+            <dt>@Html.DisplayNameFor(model => model.NameProd)</dt>
+            <dd>@Html.DisplayFor(model => model.NameProd)</dd>
+            <dt>@Html.DisplayNameFor(model => model.Measures)</dt>
+            <dd>@Html.DisplayFor(model => model.Measures)</dd>
+            <dt>@Html.DisplayNameFor(model => model.AmountProd)</dt>
+            <dd>@Html.DisplayFor(model => model.AmountProd)</dd>
+            <dt>@Html.DisplayNameFor(model => model.PriceProd)</dt>
+            <dd>@Html.DisplayFor(model => model.PriceProd)</dd>
+        </dl>
+
+   </div>
+    <div>
+        <a asp-action="Edit" asp-controller="Products" class="btn btn-sm bg-success text-white" asp-route-id="@Model.Id"> Edit </a>
+    </div>
+
+
+
+</body>
+
+
+
+
+</html>
+
