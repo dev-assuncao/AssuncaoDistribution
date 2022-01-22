@@ -1,0 +1,55 @@
+﻿@model AssuncaoDistribution.Models.Products
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    @{
+
+        ViewData["Title"] = "Title";
+    }
+
+    <meta charset="utf-8" />
+</head>
+
+<body>
+
+    <h1>Editing Product: @Model.NameProd</h1>
+     <br/>
+    <div class="row col-md-auto">
+        <form asp-action="Edit" method="post">
+            <div class="form-group">
+                <label asp-for="NameProd" class="control-label"></label>
+                <input asp-for="NameProd" class="form-control" />
+                <span asp-validation-for="NameProd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Measures" class="control-label"></label>
+                <select asp-for="Measures" class="form-control">
+                    <option value="0"> Kilograms </option>
+                    <option value="1"> Liters </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="AmountProd" class="control-label"></label>
+                <input asp-for="AmountProd" class="form-control" />
+                <span asp-validation-for="AmountProd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PriceProd" class="control-label"></label>
+                <input asp-for="PriceProd" class="form-control" />
+                <span asp-validation-for="PriceProd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-sm bg-success" value="Confirm" />
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
+
+
+
+

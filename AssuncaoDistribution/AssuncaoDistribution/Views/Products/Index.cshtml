@@ -5,7 +5,7 @@
     ViewData["Title"] = "Products";
 }
 
-<h1> Products <a asp-action="Create" class="btn bg-success text-white btn-sm"> Create </a> </h1>
+<h1> Products <a asp-action="Create" asp-controller="Products" class="btn bg-success text-white btn-sm"> Create </a> </h1>
 
     
 
@@ -34,9 +34,9 @@
                     <td>@Html.DisplayFor(Model => product.PriceProd)</td>
 
                     <td>
-                        <a asp-action="Edit" class="btn bg-primary text-white btn-sm" asp-route-id="@product.Id"> Edit </a>
-                        <a asp-action="Details" class="btn bg-primary text-white btn-sm" asp-route-id="@product.Id"> Details </a>
-                        <a asp-action="Delete" class="btn bg-danger text-white btn-sm" asp-route-id="@product.Id"> Delete</a>
+                        <a asp-action="Edit" asp-controller="Products" class="btn bg-primary text-white btn-sm" asp-route-id="@product.Id"> Edit </a>
+                        <a asp-action="Details" asp-controller="Products" class="btn bg-primary text-white btn-sm" asp-route-id="@product.Id"> Details </a>
+                        <a asp-action="Delete" asp-controller="Products" class="btn bg-danger text-white btn-sm" asp-route-id="@product.Id"> Delete</a>
                     </td>
                 </tr>
             }

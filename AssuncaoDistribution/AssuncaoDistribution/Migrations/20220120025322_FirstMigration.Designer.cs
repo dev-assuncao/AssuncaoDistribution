@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AssuncaoDistribution.Migrations
 {
     [DbContext(typeof(AssuncaoDistributionContext))]
-    [Migration("20220118000933_FirstMigration")]
+    [Migration("20220120025322_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -9,6 +9,7 @@ namespace AssuncaoDistribution.Models
 {
     public class Products
     {
+        [Key]
         public int Id { get; set; }
 
         [Display(Name = "Product Name")]

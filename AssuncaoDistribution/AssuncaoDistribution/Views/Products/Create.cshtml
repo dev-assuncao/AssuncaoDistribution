@@ -1,0 +1,47 @@
+﻿@model AssuncaoDistribution.Models.Products
+
+
+@{ 
+
+    ViewData["Title"] = "Create";
+}
+
+
+<h1>Complete the informations bellow to register a new product</h1>
+
+<br/>
+<div class="col-4">
+    <form asp-action="Create" method="post">
+        <div class="form-group">
+            <label asp-for="NameProd" class="control-label text-body"></label>
+            <input asp-for="NameProd" class="form-control" />
+            <span asp-validation-for="NameProd" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Measures" class="control-label text-body"></label>
+            <select asp-for="Measures" class="form-control">
+                <option value="0"> Kilograms </option>
+                <option value="1"> Liters </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="AmountProd" class="control-label text-body"></label>
+            <input asp-for="AmountProd" class="form-control" />
+            <span asp-validation-for="AmountProd" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PriceProd" class="control-label text-body"></label>
+            <input asp-for="PriceProd" class="form-control" />
+            <span asp-validation-for="PriceProd" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group">
+            <input type="submit" class="btn btn-sm text-white bg-success" value="Create" />
+        </div>
+    </form>
+
+
+
+
+
+</div>
