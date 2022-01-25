@@ -101,6 +101,40 @@ namespace AssuncaoDistribution.Controllers
             {
                 throw new Exception("Product not found in database");
             }
+
+
+        }
+
+
+        public IActionResult Delete(int id)
+        {
+            bool findProduct = _productServices.HasProduct(id);
+
+            if (findProduct)
+            {
+                var product = _productServices.FindProduct(id);
+
+                return View(product);
+            }
+            else
+            {
+                throw new Exception("Product not found in database or system");
+            }
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete (int id, Products product)
+        {
+            if(!ModelState.IsValid)
+            {
+                var result = _productServices.FindProduct(id);
+                return View(result);
+            }
+
+            _productServices.DeleteProduct(product);
+            return  RedirectToAction(nameof(Index));
         }
     }
 }

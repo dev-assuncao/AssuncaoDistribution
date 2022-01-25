@@ -60,5 +60,19 @@ namespace AssuncaoDistribution.Services
             _productContext.Update(product);
             _productContext.SaveChanges();
         }
+
+
+        public void DeleteProduct(Products product)
+        {
+            bool hasProduct = _productContext.Products.Any(x => x.Id == product.Id);
+
+            if (!hasProduct)
+            {
+                throw new Exception("Product not found in database");
+            }
+
+            _productContext.Remove(product);
+            _productContext.SaveChanges();
+        }
     }
 }
