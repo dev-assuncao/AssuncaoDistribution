@@ -2,21 +2,42 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace AssuncaoDistribution.Models
 {
     public class Provider
     {
         public int Id { get; set; }
+
+        [Display(Name = "Corporate Name")]
         public string CorporateName { get; set; }
+
+        [Display(Name = "Fantasy Name")]
         public string FantasyName { get; set; }
+
+
+        [Display(Name = "CNPJ or CPF")]
         public long CnpjOrCpfProv { get; set; }
+
+        [Display(Name = "Addres")]
         public string AddresProv { get; set; }
+
+        [Display(Name = "District")]
         public string DistrictProv { get; set; }
+
+        [Display(Name = "CEP")]
         public int CepProv { get; set; }
+
+        [Display(Name = "City")]
         public string CityProv { get; set; }
+
+        [Display(Name = "Phone")]
         public int PhoneProv { get; set; }
         public int Fax { get; set; }
+
+        [Display(Name = "Email")]
         public string EmailProv { get; set; }
         public string Contact { get; set; }
         public double Portage { get; set; }

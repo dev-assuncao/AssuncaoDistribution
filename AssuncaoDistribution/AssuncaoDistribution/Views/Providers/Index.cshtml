@@ -1,5 +1,62 @@
-﻿@{
-    ViewData["Title"] = "Providers";
-}
+﻿@model IEnumerable<Provider>
 
-<h1> Providers </h1>
+<!DOCTYPE html>
+    <html>
+    <head>
+        @{
+            ViewData["Title"] = "Providers";
+        }
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <h1>@ViewData["Title"] - <a asp-action="Create" asp-controller="Providers" class="btn bg-success text-white btn-sm">Create</a></h1>
+        <div class="row justify-content-sm-start">
+            <table class="table">
+                <thead>
+                    <tr class="text-center">
+                        <th>@Html.DisplayNameFor(model => model.CorporateName)</th>
+                        <th>@Html.DisplayNameFor(model => model.AddresProv)</th>
+                        <th>@Html.DisplayNameFor(model => model.DistrictProv)</th>
+                        <th>@Html.DisplayNameFor(model => model.CepProv)</th>
+                        <th>@Html.DisplayNameFor(model => model.CityProv)</th>
+                        <th>@Html.DisplayNameFor(model => model.PhoneProv)</th>
+                        <th>@Html.DisplayNameFor(model => model.EmailProv)</th>
+                        <th>@Html.DisplayNameFor(model => model.Contact)</th>
+                        <th>@Html.DisplayNameFor(model => model.Portage)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Provider provider in Model)
+                    {
+                    <tr class="text-center">
+                        <td>@Html.DisplayFor(model => provider.CorporateName)</td>
+                        <td>@Html.DisplayFor(model => provider.AddresProv)</td>
+                        <td>@Html.DisplayFor(model => provider.DistrictProv)</td>
+                        <td>@Html.DisplayFor(model => provider.CepProv)</td>
+                        <td>@Html.DisplayFor(model => provider.CityProv)</td>
+                        <td>@Html.DisplayFor(model => provider.PhoneProv)</td>
+                        <td>@Html.DisplayFor(model => provider.EmailProv)</td>
+                        <td>@Html.DisplayFor(model => provider.Contact)</td>
+                        <td>@Html.DisplayFor(model => provider.Portage)</td>
+
+
+                        <td><a asp-action="Edit" asp-controller="Providers" asp-route-id="@provider.Id" class="btn bg-primary text-white btn-sm"> Edit </a> </td>
+                        <td><a asp-action="Details" asp-controller="Providers" asp-route-id="@provider.Id" class="btn bg-primary text-white btn-sm"> Details </a> </td>
+                        <td><a asp-action="Delete" asp-controller="Providers" asp-route-id="@provider.Id" class="btn bg-danger text-white btn-sm"> Delete </a>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </body>
+
+
+
+
+
+
+
+
+</html>
+
+
