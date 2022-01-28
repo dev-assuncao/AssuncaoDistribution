@@ -1,7 +1,7 @@
 ﻿@model AssuncaoDistribution.Models.Products
 
 
-@{ 
+@{
 
     ViewData["Title"] = "Create";
 }
@@ -9,7 +9,7 @@
 
 <h1>Complete the informations bellow to register a new product</h1>
 
-<br/>
+<br />
 <div class="col-4">
     <form asp-action="Create" method="post">
         <div class="form-group">
@@ -39,9 +39,11 @@
             <input type="submit" class="btn btn-sm text-white bg-success" value="Create" />
         </div>
     </form>
-
-
-
-
-
 </div>
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsRender");
+    }
+}

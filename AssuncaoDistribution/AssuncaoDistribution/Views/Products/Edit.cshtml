@@ -16,7 +16,7 @@
 <body>
 
     <h1>Editing Product: @Model.NameProd</h1>
-     <br/>
+    <br />
     <div class="row col-md-auto">
         <form asp-action="Edit" method="post">
             <div class="form-group">
@@ -49,6 +49,15 @@
 </body>
 
 </html>
+
+
+@section Scripts {
+
+    @{
+
+        await Html.RenderPartialAsync("_ValidationScriptsRender");
+    }
+}
 
 
 

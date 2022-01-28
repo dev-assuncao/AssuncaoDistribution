@@ -4,26 +4,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-    @{ 
-        ViewData["Title"] = "Edit Prodvider";
+    @{
+        ViewData["Title"] = "Edit Provider";
     }
-
     <meta charset="utf-8" />
 </head>
 <body>
+    <h1> Edit Provider: @Model.CorporateName</h1>
 
 
 
+    <div class="row col-lg-10">
+        <form asp-action="Edit" method="post">
 
+            <div asp-validation-summary="All" class="text-danger"></div>
 
+            <div class="form-group">
+                <label asp-for="@Model.CorporateName" class="control-label text-body"></label>
+                <input asp-for="@Model.CorporateName" class="form-control" />
+                <span asp-validation-for="@Model.CorporateName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.FantasyName" class="control-label"></label>
+                <input asp-for="@Model.FantasyName" class="form-control" />
+                <span asp-validation-for="@Model.FantasyName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.CnpjOrCpfProv" class="control-label"></label>
+                <input asp-for="@Model.CnpjOrCpfProv" class="form-control" />
+                <span asp-validation-for="@Model.CnpjOrCpfProv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.AddresProv" class="control-label"></label>
+                <input asp-for="@Model.AddresProv" class="form-control" />
+                <span asp-validation-for="@Model.AddresProv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.DistrictProv" class="control-label"></label>
+                <input asp-for="@Model.DistrictProv" class="form-control" />
+                <span asp-validation-for="@Model.DistrictProv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.CepProv" class="control-label"></label>
+                <input asp-for="@Model.CepProv" class="form-control" />
+                <span asp-validation-for="@Model.CepProv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.CityProv" class="control-label"></label>
+                <input asp-for="@Model.CityProv" class="form-control" />
+                <span asp-validation-for="@Model.CityProv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PhoneProv" class="control-label"></label>
+                <input asp-for="@Model.PhoneProv" class="form-control" />
+                <span asp-validation-for="@Model.PhoneProv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Fax" class="control-label"></label>
+                <input asp-for="@Model.Fax" class="form-control" />
+                <span asp-validation-for="@Model.Fax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.EmailProv" class="control-label"></label>
+                <input asp-for="@Model.EmailProv" class="form-control" />
+                <span asp-validation-for="@Model.EmailProv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Contact" class="control-label"></label>
+                <input asp-for="@Model.Contact" class="form-control" />
+                <span asp-validation-for="@Model.Contact" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Portage" class="control-label"></label>
+                <input asp-for="@Model.Portage" class="form-control" />
+                <span asp-validation-for="@Model.Portage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn text-white bg-success btn-sm" value="Edit" />
+            </div>
+        </form>
+    </div>
 
+    @section Scripts {
+
+        @{ 
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+
+    }
 </body>
-
-
-
-
-
-
-
-
 </html>
+

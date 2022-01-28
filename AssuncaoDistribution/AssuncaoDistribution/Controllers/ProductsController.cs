@@ -34,16 +34,18 @@ namespace AssuncaoDistribution.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Products products)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                
+                var result = _productServices.HasProduct(products.Id);
+
+                _productServices.InsertProduct(products);
+
+                return RedirectToAction(nameof(Index));
             }
 
-            var result = _productServices.HasProduct(products.Id);
 
-            _productServices.InsertProduct(products);
-
-            return RedirectToAction(nameof(Index));
+            return View(products);
+            
         }
 
 
@@ -74,19 +76,17 @@ namespace AssuncaoDistribution.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int? id, Products product)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                var result = _productServices.FindProduct(id.Value);
+                _productServices.UpdateProduct(product);
 
-                return View(result);
+                return RedirectToAction(nameof(Index));
             }
 
-            _productServices.UpdateProduct(product);
-
-            return RedirectToAction(nameof(Index));
+            return View(product);
         }
 
-
+        
         public IActionResult Details(int? id)
         {
             var hasProduct = _productServices.HasProduct(id.Value);
@@ -127,14 +127,13 @@ namespace AssuncaoDistribution.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Delete (int id, Products product)
         {
-            if(!ModelState.IsValid)
+            if(ModelState.IsValid)
             {
-                var result = _productServices.FindProduct(id);
-                return View(result);
+                _productServices.DeleteProduct(product);
+                return RedirectToAction(nameof(Index));
             }
 
-            _productServices.DeleteProduct(product);
-            return  RedirectToAction(nameof(Index));
+            return View(product);
         }
     }
 }

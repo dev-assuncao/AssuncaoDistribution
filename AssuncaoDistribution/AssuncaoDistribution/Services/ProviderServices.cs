@@ -23,6 +23,31 @@ namespace AssuncaoDistribution.Services
         }
 
 
+        public Provider FindProvider(int id)
+        {
+            return _providerContext.Providers.FirstOrDefault(x => x.Id == id);
+        }
+
+        public bool HasProvider(int id)
+        {
+            return _providerContext.Providers.Any(x => x.Id == id);
+        }
+
+
+        public void UpdateProvider (Provider provider)
+        {
+            var hasProvider = _providerContext.Providers.Any(x => x.Id == provider.Id);
+
+            if (!hasProvider)
+            {
+                throw new Exception("Provider not found in database");
+            }
+
+            _providerContext.Update(provider);
+
+            _providerContext.SaveChanges();
+        }
+
 
 
     }
