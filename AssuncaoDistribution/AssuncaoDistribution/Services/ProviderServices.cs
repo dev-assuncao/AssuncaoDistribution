@@ -34,6 +34,19 @@ namespace AssuncaoDistribution.Services
         }
 
 
+        public void CreateProvider(Provider provider)
+        {
+            var hasProv = _providerContext.Providers.Any(x => x.CorporateName == provider.CorporateName);
+
+            if (hasProv)
+            {
+                throw new Exception("Provider already register in database");
+            }
+            _providerContext.Add(provider);
+            _providerContext.SaveChanges();
+        }
+
+
         public void UpdateProvider (Provider provider)
         {
             var hasProvider = _providerContext.Providers.Any(x => x.Id == provider.Id);

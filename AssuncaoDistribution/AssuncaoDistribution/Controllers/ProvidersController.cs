@@ -25,6 +25,28 @@ namespace AssuncaoDistribution.Controllers
             return View(allProviders);
         }
 
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult Create(Provider provider)
+        {
+            if(ModelState.IsValid)
+            {
+                _providerContext.CreateProvider(provider);
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(provider);
+        }
+
+
+
 
         [HttpGet]
         public IActionResult Edit(int? id)

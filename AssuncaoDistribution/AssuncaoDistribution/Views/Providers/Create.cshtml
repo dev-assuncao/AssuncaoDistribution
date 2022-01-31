@@ -1,0 +1,103 @@
+﻿@model AssuncaoDistribution.Models.Provider
+
+<!DOCTYPE html>
+<html>
+<head>
+    @{
+        ViewData["Title"] = "Create Provider";
+    }
+</head>
+<body>
+    <h1> Register new Provider </h1>
+    <br />
+    <div class="row col-md-7">
+        <form asp-action="Create" method="post">
+
+            <div asp-validation-summary="All">
+
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CorporateName" class="control-label"></label>
+                <input asp-for="CorporateName" class="form-control" />
+                <span asp-validation-for="CorporateName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FantasyName" class="control-label"></label>
+                <input asp-for="FantasyName" class="form-control" />
+                <span asp-validation-for="FantasyName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CnpjOrCpfProv" class="control-label"></label>
+                <input asp-for="CnpjOrCpfProv" class="form-control" />
+                <span asp-validation-for="CnpjOrCpfProv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddresProv" class="control-label"></label>
+                <input asp-for="AddresProv" class="form-control" />
+                <span asp-validation-for="AddresProv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DistrictProv" class="control-label"></label>
+                <input asp-for="DistrictProv" class="form-control" />
+                <span asp-validation-for="DistrictProv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CepProv" class="control-label"></label>
+                <input asp-for="CepProv" class="form-control" />
+                <span asp-validation-for="CepProv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CityProv" class="control-label"></label>
+                <input asp-for="CityProv" class="form-control" />
+                <span asp-validation-for="CityProv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneProv" class="control-label"></label>
+                <input asp-for="PhoneProv" class="form-control" />
+                <span asp-validation-for="PhoneProv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fax" class="control-label"></label>
+                <input asp-for="Fax" class="form-control" />
+                <span asp-validation-for="Fax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailProv" class="control-label"></label>
+                <input asp-for="EmailProv" class="form-control" />
+                <span asp-validation-for="EmailProv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact" class="control-label"></label>
+                <input asp-for="Contact" class="form-control" />
+                <span asp-validation-for="Contact" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Portage" class="control-label"></label>
+                <input asp-for="Portage" class="form-control" />
+                <span asp-validation-for="Portage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-sm bg-success text-white" value="Create" />
+            </div>
+        </form>
+    </div>
+</body>
+
+
+
+@section Scripts
+{
+    @{ 
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    } 
+}
+
+</html>
+
+
+
+
+
+
+
