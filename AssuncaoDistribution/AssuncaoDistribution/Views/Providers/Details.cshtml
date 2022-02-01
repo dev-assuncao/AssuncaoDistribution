@@ -1,0 +1,23 @@
+﻿@model AssuncaoDistribution.Models.Provider
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    @{ 
+        ViewData["Title"] = "Details";
+    }
+    <meta charset="utf-8" />
+</head>
+<body>
+
+    <h1> Details of Provider: @Model.CorporateName </h1>
+
+
+    <partial name="_ProvPartial" model="Model" />
+
+    <a asp-action="Edit" asp-controller="Providers" class="btn btn-sm text-white bg-primary" asp-route-id="@Model.Id"> Edit </a>
+
+
+</body>
+</html>

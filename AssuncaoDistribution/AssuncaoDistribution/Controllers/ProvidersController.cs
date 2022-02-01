@@ -80,5 +80,23 @@ namespace AssuncaoDistribution.Controllers
             }
             return View(provider);
         }
+
+
+        public IActionResult Details(int id)
+        {
+            var hasProv = _providerContext.HasProvider(id);
+
+            if (hasProv)
+            {
+                var provider = _providerContext.FindProvider(id);
+
+                return View(provider);
+            }
+            else
+            {
+                throw new Exception("Provider not found in database");
+            }
+           
+        }
     }
 }
