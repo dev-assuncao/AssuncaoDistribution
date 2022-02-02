@@ -1,0 +1,39 @@
+﻿@model AssuncaoDistribution.Models.Provider
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    @{ 
+        ViewData["Title"] = "Delete Provider";
+    }
+
+    <meta charset="utf-8" />
+</head>
+<body>
+
+    <h1> Do you want delete this provider? </h1>
+
+
+    <partial name="_ProvPartial" model="Model" />
+
+
+
+    <div class="row col-7">
+        <form method="post" asp-action="Delete">
+            <div class="form-group">
+                <input type="submit" class="btn btn-sm text-white bg-danger" value="Delete" />
+            </div>
+        </form>
+    </div>
+
+</body>
+
+
+
+
+
+
+
+</html>

@@ -61,7 +61,20 @@ namespace AssuncaoDistribution.Services
             _providerContext.SaveChanges();
         }
 
+        public void DeleteProvider (Provider provider)
+        {
+            var hasProv = _providerContext.Providers.Any(x => x.Id == provider.Id);
 
+            if (hasProv)
+            {
+                _providerContext.Remove(provider);
+                _providerContext.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Provider do not find in database");
+            }
+        }
 
     }
 }

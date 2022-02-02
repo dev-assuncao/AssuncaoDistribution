@@ -98,5 +98,39 @@ namespace AssuncaoDistribution.Controllers
             }
            
         }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var hasProv = _providerContext.HasProvider(id);
+
+            if (hasProv)
+            {
+                var provider = _providerContext.FindProvider(id);
+
+                return View(provider);
+            }
+            else
+            {
+                throw new Exception("Provider do not exist in database");
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete (Provider provider)
+        {
+            if (ModelState.IsValid)
+            {
+                _providerContext.DeleteProvider(provider);
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(provider);
+
+        }
+
+
     }
 }
