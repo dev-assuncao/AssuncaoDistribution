@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AssuncaoDistribution.Services;
 using AssuncaoDistribution.Models;
 
@@ -131,6 +128,39 @@ namespace AssuncaoDistribution.Controllers
 
         }
 
+
+        [Route("error/{id:length(3,3)}")]
+        public IActionResult Error (int id)
+        {
+            var errorModel = new ErrorViewModel();
+
+
+            if (id == 500)
+            {
+                errorModel.ErrorCode = id;
+                errorModel.Title = "An error ocurred!";
+                errorModel.Message = "An error ocurred! Please, try again later or contact our suport";
+            }
+            else if (id == 404)
+            {
+                errorModel.ErrorCode = id;
+                errorModel.Title = "Page not found";
+                errorModel.Message = "This page not exists!";
+            }
+            else if (id == 403)
+            {
+                errorModel.ErrorCode = id;
+                errorModel.Title = "Access denied";
+                errorModel.Message = "You not have permission to do this";
+            }
+            else
+            {
+                return StatusCode(404);
+            }
+
+
+            return View("Error");
+        }
 
     }
 }
