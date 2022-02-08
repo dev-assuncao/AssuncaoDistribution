@@ -19,7 +19,7 @@ namespace AssuncaoDistribution
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(hostEnvironment.ContentRootPath)
-                .AddJsonFile(path: "appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile(path: "appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile(path: $"appsettings.{hostEnvironment.EnvironmentName}.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables();
 

@@ -1,4 +1,4 @@
-﻿{
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
@@ -12,33 +12,30 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "development"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-
-      "IIS - Staging": {
-        "commandName": "IISExpress",
-        "launchBrowser": true,
-        "environmentVariables": {
-          "ASPNETCORE_ENVIRONMENT": "staging"
-        }
-      },
-
-        "IIS - Prod": {
-          "commandName": "IISExpress",
-          "launchBrowser": true,
-          "environmentVariables": {
-            "ASPNETCORE_ENVIRONMENT": "production"
-          }
-        },
-
-        "Self Hosting": {
-          "commandName": "Project",
-          "launchBrowser": true,
-          "applicationUrl": "https://localhost:5001;http://localhost:5000",
-          "environmentVariables": {
-            "ASPNETCORE_ENVIRONMENT": "Development"
-          }
-        }
+    "IIS - Staging": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Staging"
       }
+    },
+    "IIS - Prod": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      }
+    },
+    "Self Hosting": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:5001;http://localhost:5000"
     }
+  }
+}

@@ -159,7 +159,7 @@ namespace AssuncaoDistribution.Controllers
             }
 
 
-            return View("Error");
+            return View(errorModel);
         }
 
     }
