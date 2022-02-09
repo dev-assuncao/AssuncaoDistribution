@@ -35,6 +35,7 @@ namespace AssuncaoDistribution
             services.AddScoped<SeedingService>();
             services.AddScoped<ProductServices>();
             services.AddScoped<ProviderServices>();
+            services.AddScoped<ClientServices>();
             services.AddDbContext<AssuncaoDistributionContext>(options => options.UseMySql(Configuration.GetConnectionString("AssuncaoDistributionContext")));
         }
 

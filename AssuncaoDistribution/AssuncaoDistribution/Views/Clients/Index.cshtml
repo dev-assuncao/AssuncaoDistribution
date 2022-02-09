@@ -1,5 +1,64 @@
-﻿@{
-    ViewData["Title"] = "Clients";
-}
+﻿@model IEnumerable<Client>
 
-<h1> Clients </h1>
+
+<!DOCTYPE html>
+<html>
+<head>
+    @{
+        ViewData["Title"] = "Clients";
+    }
+    <meta charset="utf-8" />
+</head>
+<body>
+    <h1> Clients - <a asp-action="Create" asp-controller="Clients" class="btn btn-sm bg-success text-white"> Create </a> </h1>
+
+
+    <div class="row">
+        <div class="col-lg-auto">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Name)</th>
+                        <th>@Html.DisplayNameFor(model => model.ContactCli)</th>
+                        <th>@Html.DisplayNameFor(model => model.Birthday)</th>
+                        <th>@Html.DisplayNameFor(model => model.Address)</th>
+                        <th>@Html.DisplayNameFor(model => model.Cep)</th>
+                        <th>@Html.DisplayNameFor(model => model.City)</th>
+                        <th>@Html.DisplayNameFor(model => model.Email)</th>
+                        <th>@Html.DisplayNameFor(model => model.Phone)</th>
+                        <th>@Html.DisplayNameFor(model => model.Uf)</th>
+                    </tr>
+                </thead>
+                @foreach (Client client in Model)
+                {
+                    <tbody>
+                        <tr>
+                            <td>@Html.DisplayFor(model => client.Name)</td>
+                            <td>@Html.DisplayFor(model => client.ContactCli)</td>
+                            <td>@Html.DisplayFor(model => client.Birthday)</td>
+                            <td>@Html.DisplayFor(model => client.Address)</td>
+                            <td>@Html.DisplayFor(model => client.Cep)</td>
+                            <td>@Html.DisplayFor(model => client.City)</td>
+                            <td>@Html.DisplayFor(model => client.Email)</td>
+                            <td>@Html.DisplayFor(model => client.Phone)</td>
+                            <td>@Html.DisplayFor(model => client.Uf)</td>
+                        </tr>
+                    </tbody>
+                }
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>
+

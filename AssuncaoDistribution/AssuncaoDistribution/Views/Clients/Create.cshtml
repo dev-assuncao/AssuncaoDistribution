@@ -1,0 +1,94 @@
+﻿@model AssuncaoDistribution.Models.Client;
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    @{ 
+        ViewData["Title"] = "Create Client";
+    }
+
+    <meta charset="utf-8" />
+</head>
+<body>
+    <h1> Adding client: </h1>
+
+    <div class="row">
+        <div class="col-md-5">
+            <form asp-action="Create" method="post" asp-controller="Clients">
+                <div class="form-group col-md-5">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-5">
+                    <label asp-for="ContactCli" class="control-label"></label>
+                    <input asp-for="ContactCli" class="form-control" />
+                    <span asp-validation-for="ContactCli" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-5">
+                    <label asp-for="ContactCli" class="control-label"></label>
+                    <input asp-for="ContactCli" class="form-control" />
+                    <span asp-validation-for="ContactCli" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-5">
+                    <label asp-for="Birthday" class="control-label"></label>
+                    <input asp-for="Birthday" class="form-control" />
+                    <span asp-validation-for="Birthday" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-5">
+                    <label asp-for="Address" class="control-label"></label>
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-5">
+                    <label asp-for="Cep" class="control-label"></label>
+                    <input asp-for="Cep" class="form-control" />
+                    <span asp-validation-for="Cep" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-5">
+                    <label asp-for="City" class="control-label"></label>
+                    <input asp-for="City" class="form-control" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-5">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-5">
+                    <label asp-for="Phone" class="control-label"></label>
+                    <input asp-for="Phone" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-5">
+                    <label asp-for="Uf" class="control-label"></label>
+                    <input asp-for="Uf" class="form-control" />
+                    <span asp-validation-for="Uf" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-5">
+                    <label asp-for="CnpjOrCpf" class="control-label"></label>
+                    <input asp-for="CnpjOrCpf" class="form-control" />
+                    <span asp-validation-for="CnpjOrCpf" class="text-danger"></span>
+                </div>
+                <div class="form-control-lg col-md-5">
+                    <input type="submit" class="btn btn-sm bg-success text-white" value="Create" />
+                </div>
+            </form>
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+
+
+</body>
+
+
+</html>
