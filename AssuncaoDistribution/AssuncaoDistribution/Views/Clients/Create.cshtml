@@ -8,6 +8,9 @@
     @{
         ViewData["Title"] = "Create Client";
     }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://rawgit.com/RobinHerbots/Inputmask/5.x/dist/jquery.inputmask.js"></script>
 
     <meta charset="utf-8" />
 </head>
@@ -18,18 +21,12 @@
         <div class="col-md-5">
             <form asp-action="Create" method="post" asp-controller="Clients">
                 <div asp-validation-summary="All" class="text-danger">
-
                 </div>
 
                 <div class="form-group col-md-5">
                     <label asp-for="Name" class="control-label"></label>
                     <input asp-for="Name" class="form-control" />
                     <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-5">
-                    <label asp-for="ContactCli" class="control-label"></label>
-                    <input asp-for="ContactCli" class="form-control" />
-                    <span asp-validation-for="ContactCli" class="text-danger"></span>
                 </div>
                 <div class="form-group col-md-5">
                     <label asp-for="ContactCli" class="control-label"></label>
@@ -48,7 +45,7 @@
                 </div>
                 <div class="form-group col-md-5">
                     <label asp-for="Cep" class="control-label"></label>
-                    <input asp-for="Cep" class="form-control" />
+                    <input type="text" asp-for="Cep" id="CEP" class="form-control" />
                     <span asp-validation-for="Cep" class="text-danger"></span>
                 </div>
                 <div class="form-group col-md-5">
@@ -63,7 +60,7 @@
                 </div>
                 <div class="form-group col-md-5">
                     <label asp-for="Phone" class="control-label"></label>
-                    <input asp-for="Phone" class="form-control" />
+                    <input type="text" asp-for="Phone" id="TEL" class="form-control" />
                     <span asp-validation-for="Phone" class="text-danger"></span>
                 </div>
                 <div class="form-group col-md-5">
@@ -84,11 +81,19 @@
     </div>
 </body>
 </html>
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 
-
-@section Scripts {
-
-@{ 
-    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+<script>
+    $(document).ready(function () {
+        $("#CEP").inputmask('99999-999');
+        $("#TEL").inputmask('(99) 99999-9999')
+    }
+    );
+</script>
 }
-}
+
+

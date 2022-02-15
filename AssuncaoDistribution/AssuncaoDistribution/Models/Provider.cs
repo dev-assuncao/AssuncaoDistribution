@@ -19,7 +19,7 @@ namespace AssuncaoDistribution.Models
 
 
         [Display(Name = "CNPJ or CPF")]
-        public long CnpjOrCpfProv { get; set; }
+        public string CnpjOrCpfProv { get; set; }
 
         [Display(Name = "Addres")]
         public string AddresProv { get; set; }
@@ -28,7 +28,7 @@ namespace AssuncaoDistribution.Models
         public string DistrictProv { get; set; }
 
         [Display(Name = "CEP")]
-        public int CepProv { get; set; }
+        public string CepProv { get; set; }
 
         [Display(Name = "City")]
         public string CityProv { get; set; }
@@ -46,7 +46,7 @@ namespace AssuncaoDistribution.Models
         {
         }
 
-        public Provider(int codProv, string corporateName, string fantasyName, long cnpjOrCpfProv, string addresProv, string districtProv, int cepProv, string cityProv, int phoneProv, int fax, string emailProv, string contact, double portage)
+        public Provider(int codProv, string corporateName, string fantasyName, string cnpjOrCpfProv, string addresProv, string districtProv, string cepProv, string cityProv, int phoneProv, int fax, string emailProv, string contact, double portage)
         {
             Id = codProv;
             CorporateName = corporateName;

@@ -3,14 +3,16 @@ using System;
 using AssuncaoDistribution.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AssuncaoDistribution.Migrations
 {
     [DbContext(typeof(AssuncaoDistributionContext))]
-    partial class AssuncaoDistributionContextModelSnapshot : ModelSnapshot
+    [Migration("20220211004915_CorrectionCPFeCEP")]
+    partial class CorrectionCPFeCEP
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,7 +26,6 @@ namespace AssuncaoDistribution.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("Birthday")
@@ -40,18 +41,16 @@ namespace AssuncaoDistribution.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("ContactCli")
-                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Email")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("Phone")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<int>("Phone")
+                        .HasColumnType("int");
 
                     b.Property<string>("Uf")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");

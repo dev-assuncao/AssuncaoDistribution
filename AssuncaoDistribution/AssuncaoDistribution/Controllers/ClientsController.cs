@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using AssuncaoDistribution.Services;
-
+using AssuncaoDistribution.Models;
+using System;
 
 namespace AssuncaoDistribution.Controllers
 {
@@ -26,6 +27,20 @@ namespace AssuncaoDistribution.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Client client)
+        {
+            if (ModelState.IsValid)
+            {
+                _clientContext.InsertClient(client);
+               return RedirectToAction(nameof(Index));
+            }
+
+            return View(client);
         }
     }
 }

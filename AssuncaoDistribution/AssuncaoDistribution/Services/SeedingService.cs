@@ -26,11 +26,11 @@ namespace AssuncaoDistribution.Services
                 return;
             }
 
-            Client c1 = new Client(1, "Davisson Assunção", "Davi", new DateTime(2001, 10, 08), "Av. Presidente Castelo Branco", 09320795, "Mauá" ,"davisson.happycode@gmail.com", 995253859, "SP", 44900552798);
-            Client c2 = new Client(2, "Stephanie Souza", "Steh", new DateTime(2000, 05, 06), "Av. Barão de Mauá", 09320 - 130, "Mauá", "stephanie@gmail.com", 985764370, "SP", 09289201920);
+            Client c1 = new Client(1, "Davisson Assunção", "Davi", new DateTime(2001, 10, 08), "Av. Presidente Castelo Branco", "09320795", "Mauá" ,"davisson.happycode@gmail.com", "11995253859", "SP", "44900552798");
+            Client c2 = new Client(2, "Stephanie Souza", "Steh", new DateTime(2000, 05, 06), "Av. Barão de Mauá","09320130", "Mauá", "stephanie@gmail.com", "11985764370", "SP", "09289201920");
 
-            Provider p1 = new Provider(001, "Papeis Alexandre LTDA", "Pampa", 10020030001, "Rua Angelo Bertuchi", "Vila Nova Mauá", 09390620, "Mauá", 980706050, 05001, "pampa.lda@gmail.com", "Pampa Papeis", 4.00);
-            Provider p2 = new Provider(002, "Plasticos Moura LTDA", "Plastik", 10020030002, "Gilberto Verdoliva", "Vila Nova Mauá", 09390720, "Mauá", 98070604, 06001, "plastik.lda@gmail.com", "Plastik Moura", 9.00);
+            Provider p1 = new Provider(001, "Papeis Alexandre LTDA", "Pampa", "10020030001", "Rua Angelo Bertuchi", "Vila Nova Mauá", "09390620", "Mauá", 980706050, 05001, "pampa.lda@gmail.com", "Pampa Papeis", 4.00);
+            Provider p2 = new Provider(002, "Plasticos Moura LTDA", "Plastik", "10020030002", "Gilberto Verdoliva", "Vila Nova Mauá", "09390720", "Mauá", 980706047, 06001, "plastik.lda@gmail.com", "Plastik Moura", 9.00);
 
             SalesOrder s1 = new SalesOrder(001, c1,  new DateTime(2022,01,01), 50.00);
             SalesOrder s2 = new SalesOrder(002, c2, new DateTime(2022, 01, 02), 150.00);
