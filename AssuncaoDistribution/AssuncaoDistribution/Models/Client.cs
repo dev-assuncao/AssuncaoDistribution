@@ -21,7 +21,7 @@ namespace AssuncaoDistribution.Models
         public string ContactCli { get; set; }
 
         [Required(ErrorMessage = "Please inform your Birthday")]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}")]
         public DateTime Birthday { get; set; }
 
@@ -32,7 +32,7 @@ namespace AssuncaoDistribution.Models
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Uf { get; set; }
-        [Display(Name= "CNPJ or CPF")]
+        [Display(Name= "CPF")]
         public string CnpjOrCpf { get; set; }
 
         public Client()

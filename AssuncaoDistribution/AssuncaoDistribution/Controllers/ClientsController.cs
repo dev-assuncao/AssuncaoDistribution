@@ -42,5 +42,21 @@ namespace AssuncaoDistribution.Controllers
 
             return View(client);
         }
+
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var findCli = _clientContext.FindClient(id);
+
+            if (findCli != null)
+            {
+                return View(findCli);
+            }
+            else
+            {
+                throw new Exception("Client not find in database");
+            }
+        }
     }
 }

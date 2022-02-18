@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:4162",
-      "sslPort": 44304
+      "applicationUrl": "http://localhost:6145/",
+      "sslPort": 44322
     }
   },
   "profiles": {
@@ -29,7 +29,7 @@
         "ASPNETCORE_ENVIRONMENT": "Production"
       }
     },
-    "Self Hosting": {
+    "AssuncaoDistribution": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

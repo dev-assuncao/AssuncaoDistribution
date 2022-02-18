@@ -1,0 +1,111 @@
+﻿@model AssuncaoDistribution.Models.Client
+
+<html>
+<head>
+    @{
+        ViewData["Title"] = "Editing Client...";
+    }
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://rawgit.com/RobinHerbots/Inputmask/5.x/dist/jquery.inputmask.js"></script>
+
+    <meta charset="utf-8" />
+</head>
+<body>
+    <h1> Editing Client: @Model.Name</h1>
+
+    <div class="row col-md-auto">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group row">
+                <label asp-for="Name" class="col-form-label"></label>
+                <div class="col-md-auto">
+                    <input type="text" asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="ContactCli" class="col-form-label"></label>
+                <div class="col-md-auto">
+                    <input type="text" asp-for="ContactCli" class="form-control" />
+                    <span asp-validation-for="ContactCli" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Birthday" class="col-form-label"></label>
+                <div class="col-md-auto">
+                    <input asp-for="Birthday" class="form-control" />
+                    <span asp-validation-for="Birthday" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Address" class="col-form-label"></label>
+                <div class="col-md-auto">
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Cep" class="col-form-label"></label>
+                <div class="col-md-6">
+                    <input type="text" asp-for="Cep" id="CEP" class="form-control" />
+                    <span asp-validation-for="Cep" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="City" class="col-form-label"></label>
+                <div class="col-md-5">
+                    <input asp-for="City" class="form-control" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Email" class="col-form-label"></label>
+                <div class="col-md-auto">
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Phone" class="col-form-label"></label>
+                <div class="col-md-7">
+                    <input type="text" asp-for="Phone" id="TEL" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row text-center">
+                <label asp-for="Uf" class="col-form-label"></label>
+                <div class="col-md-5">
+                    <input asp-for="Uf" class="form-control" />
+                    <span asp-validation-for="Uf" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="CnpjOrCpf" class="col-form-label"></label>
+                <div class="col-md-8">
+                    <input type="text" asp-for="CnpjOrCpf" id="CPF" class="form-control" placeholder="" />
+                    <span asp-validation-for="CnpjOrCpf" class="text-danger"></span>
+                </div>
+
+                <input type="submit" class="btn btn-sm text-white bg-success" value="Submit" />
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+<script>
+    $(document).ready(function () {
+        $("#CEP").inputmask('99999-999');
+        $("#TEL").inputmask('(99) 99999-9999');
+        $("#CPF").inputmask('999.999.999-99')
+    }
+    );
+</script>
+}
