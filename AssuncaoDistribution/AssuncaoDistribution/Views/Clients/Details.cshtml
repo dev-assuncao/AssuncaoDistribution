@@ -1,0 +1,23 @@
+﻿@model AssuncaoDistribution.Models.Client
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    @{ 
+        ViewData["Title"] = "Details of client";
+    }
+</head>
+<body>
+
+    <h1>@ViewData["Title"] - @Model.Name </h1>
+
+    <partial name="_ClientPartial" model="Model" />
+
+
+
+</body>
+
+
+</html>

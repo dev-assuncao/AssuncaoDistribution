@@ -25,13 +25,23 @@ namespace AssuncaoDistribution.Models
         [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}")]
         public DateTime Birthday { get; set; }
 
-        [Required(ErrorMessage = "Please fill the fild Address")]
+        [Required(ErrorMessage = "Please fill the field Address")]
         public string Address { get; set; }
+        [Required(ErrorMessage = "Please fill the field CEP")]
         public string Cep { get; set; }
+
+        [Required(ErrorMessage = "Please fill the field City")]
         public string City { get; set; }
+
+        [Required(ErrorMessage = "Please fill the field Email")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "Please fill the field Phone")]
         public string Phone { get; set; }
+
+        [Required(ErrorMessage = "Please Fill the field UF ")]
         public string Uf { get; set; }
+        [Required(ErrorMessage = "Please Fill the field CPF")]
         [Display(Name= "CPF")]
         public string CnpjOrCpf { get; set; }
 

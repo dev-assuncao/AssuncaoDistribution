@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AssuncaoDistribution.Data;
 using AssuncaoDistribution.Models;
+using AssuncaoDistribution.Services.Exceptions;
 
 namespace AssuncaoDistribution.Services
 {
@@ -53,7 +54,7 @@ namespace AssuncaoDistribution.Services
 
             if (!hasProvider)
             {
-                throw new Exception("Provider not found in database");
+                throw new NotFoundException("Provider not found in database");
             }
 
             _providerContext.Update(provider);
@@ -65,15 +66,13 @@ namespace AssuncaoDistribution.Services
         {
             var hasProv = _providerContext.Providers.Any(x => x.Id == provider.Id);
 
-            if (hasProv)
+            if (!hasProv)
             {
-                _providerContext.Remove(provider);
-                _providerContext.SaveChanges();
+                throw new NotFoundException("Provider do not find in database");
+
             }
-            else
-            {
-                throw new Exception("Provider do not find in database");
-            }
+            _providerContext.Remove(provider);
+            _providerContext.SaveChanges();
         }
 
     }

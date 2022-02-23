@@ -70,7 +70,7 @@
             <div class="form-group row">
                 <label asp-for="Phone" class="col-form-label"></label>
                 <div class="col-md-7">
-                    <input type="text" asp-for="Phone" id="TEL" class="form-control" />
+                    <input type="text" asp-for="Phone" id="TEL" class="form-control" placeholder="(__) _____-____" />
                     <span asp-validation-for="Phone" class="text-danger"></span>
                 </div>
             </div>
@@ -84,7 +84,7 @@
             <div class="form-group row">
                 <label asp-for="CnpjOrCpf" class="col-form-label"></label>
                 <div class="col-md-8">
-                    <input type="text" asp-for="CnpjOrCpf" id="CPF" class="form-control" placeholder="" />
+                    <input type="text" asp-for="CnpjOrCpf" id="CPF" class="form-control" placeholder="___.___.___-__" />
                     <span asp-validation-for="CnpjOrCpf" class="text-danger"></span>
                 </div>
 

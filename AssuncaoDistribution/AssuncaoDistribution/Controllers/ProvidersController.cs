@@ -59,7 +59,7 @@ namespace AssuncaoDistribution.Controllers
             }
             else
             {
-                throw new Exception("Not exists provider in database");
+                throw new Exception("Provider not found");
             }
         }
 
@@ -109,6 +109,7 @@ namespace AssuncaoDistribution.Controllers
             }
             else
             {
+
                 throw new Exception("Provider do not exist in database");
             }
         }
@@ -130,26 +131,26 @@ namespace AssuncaoDistribution.Controllers
 
 
         [Route("error/{id:length(3,3)}")]
-        public IActionResult Error (int id)
+        public IActionResult Error (int? id)
         {
             var errorModel = new ErrorViewModel();
 
 
-            if (id == 500)
+            if (id.Value == 500)
             {
-                errorModel.ErrorCode = id;
+                errorModel.ErrorCode = id.Value;
                 errorModel.Title = "An error ocurred!";
                 errorModel.Message = "An error ocurred! Please, try again later or contact our suport";
             }
-            else if (id == 404)
+            else if (id.Value == 404)
             {
-                errorModel.ErrorCode = id;
+                errorModel.ErrorCode = id.Value;
                 errorModel.Title = "Page not found";
                 errorModel.Message = "This page not exists!";
             }
-            else if (id == 403)
+            else if (id.Value == 403)
             {
-                errorModel.ErrorCode = id;
+                errorModel.ErrorCode = id.Value;
                 errorModel.Title = "Access denied";
                 errorModel.Message = "You not have permission to do this";
             }
@@ -157,8 +158,6 @@ namespace AssuncaoDistribution.Controllers
             {
                 return StatusCode(404);
             }
-
-
             return View(errorModel);
         }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AssuncaoDistribution.Data;
 using AssuncaoDistribution.Models;
+using AssuncaoDistribution.Services.Exceptions;
 
 namespace AssuncaoDistribution.Services
 {
@@ -29,9 +30,9 @@ namespace AssuncaoDistribution.Services
         }
 
 
-        public bool HasClient(string cpfOrCnpj)
+        public bool HasClient(int id)
         {
-            return _clientContext.Clients.Any(x => x.CnpjOrCpf == cpfOrCnpj);
+            return _clientContext.Clients.Any(x => x.Id == id);
         }
 
         public void InsertClient (Client client)
@@ -40,11 +41,24 @@ namespace AssuncaoDistribution.Services
 
             if(hasClient)
             {
-                throw new Exception("Already client in database");
+                throw new ApplicationException("Already client in database");
             }
 
             _clientContext.Clients.Add(client);
 
+            _clientContext.SaveChanges();
+        }
+
+        public void UpdateClient (Client client)
+        {
+            var hasClient = _clientContext.Clients.Any(x => x.Id == client.Id);
+
+
+            if (!hasClient)
+            {
+                throw new NotFoundException("Not find client in database to update");
+            }
+            _clientContext.Clients.Update(client);
             _clientContext.SaveChanges();
         }
 

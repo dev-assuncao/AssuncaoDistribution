@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AssuncaoDistribution.Data;
 using AssuncaoDistribution.Models;
+using AssuncaoDistribution.Services.Exceptions;
 
 namespace AssuncaoDistribution.Services
 {
@@ -54,7 +55,7 @@ namespace AssuncaoDistribution.Services
 
             if (!hasProduct)
             {
-                throw new Exception("Product not found in database");
+                throw new NotFoundException("Product not found in database");
             }
 
             _productContext.Update(product);
@@ -68,7 +69,7 @@ namespace AssuncaoDistribution.Services
 
             if (!hasProduct)
             {
-                throw new Exception("Product not found in database");
+                throw new NotFoundException("Product not found in database");
             }
 
             _productContext.Remove(product);

@@ -58,5 +58,39 @@ namespace AssuncaoDistribution.Controllers
                 throw new Exception("Client not find in database");
             }
         }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit (Client client)
+        {
+            if (ModelState.IsValid)
+            {
+                _clientContext.UpdateClient(client);
+
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return View(client);
+            }
+        }
+
+
+        public IActionResult Details (int id)
+        {
+            var hasCli = _clientContext.HasClient(id);
+
+            if (hasCli)
+            {
+                var client = _clientContext.FindClient(id);
+                return View(client);
+            }
+            else
+            {
+                throw new Exception("Client not find in database, please try again");
+            }
+        }
+
     }
 }
