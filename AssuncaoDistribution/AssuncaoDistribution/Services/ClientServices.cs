@@ -62,6 +62,18 @@ namespace AssuncaoDistribution.Services
             _clientContext.SaveChanges();
         }
 
+        public void DeleteClient (Client client)
+        {
+            var hasClient = _clientContext.Clients.Any(x => x.Id == client.Id);
+
+            if (!hasClient)
+            {
+                throw new Exception("Not find client to delete");
+            }
+
+            _clientContext.Clients.Remove(client);
+            _clientContext.SaveChanges();
+        }
 
 
     }

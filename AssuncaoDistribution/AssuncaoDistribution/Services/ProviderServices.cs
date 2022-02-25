@@ -69,7 +69,6 @@ namespace AssuncaoDistribution.Services
             if (!hasProv)
             {
                 throw new NotFoundException("Provider do not find in database");
-
             }
             _providerContext.Remove(provider);
             _providerContext.SaveChanges();

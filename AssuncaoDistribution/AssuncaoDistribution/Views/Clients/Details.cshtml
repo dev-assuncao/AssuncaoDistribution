@@ -17,6 +17,15 @@
 
 
 
+    <div class="form-group row">
+        <div class="col-sm-1">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm text-white bg-success"> Edit </a>
+        </div>
+        <div class="col-sm-1">
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm text-white bg-danger"> Delete </a>
+        </div>
+    </div>
+
 </body>
 
 

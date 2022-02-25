@@ -1,0 +1,31 @@
+﻿@model AssuncaoDistribution.Models.Client
+
+<!DOCTYPE html>
+<html>
+<head>
+    @{
+        ViewData["Title"] = "Deleting client";
+    }
+    <meta charset="utf-8" />
+</head>
+<body>
+    <h1 class="text-center text-danger"> Do you like to delete this client?</h1>
+
+    <partial name="_ClientPartial" model="Model" />
+
+    <form method="post" asp-action="Delete">
+        <div class="form-group">
+            <input type="submit" class="bg-danger text-white btn btn-sm" value="Delete" />
+        </div>
+    </form>
+
+
+
+</body>
+
+
+
+
+
+
+</html>

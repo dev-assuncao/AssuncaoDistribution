@@ -2,7 +2,8 @@
 using System;
 using AssuncaoDistribution.Services;
 using AssuncaoDistribution.Models;
-
+using AssuncaoDistribution.Services.Exceptions;
+using System.Diagnostics;
 
 namespace AssuncaoDistribution.Controllers
 {
@@ -32,7 +33,7 @@ namespace AssuncaoDistribution.Controllers
         [HttpPost]
         public IActionResult Create(Provider provider)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _providerContext.CreateProvider(provider);
 
@@ -51,16 +52,20 @@ namespace AssuncaoDistribution.Controllers
 
             var hasProvider = _providerContext.HasProvider(id.Value);
 
-            if (hasProvider)
+            if (!hasProvider)
             {
-                var findProvider = _providerContext.FindProvider(id.Value);
+                return RedirectToAction(nameof(Error), new { Message = "Provider not found", id = 404 });
+            }
 
-                return View(findProvider);
-            }
-            else
+            var findProvider = _providerContext.FindProvider(id.Value);
+
+
+            if (findProvider == null)
             {
-                throw new Exception("Provider not found");
+                return RedirectToAction(nameof(Error), new { Message = "Provider can not be null, please try again", id = 400});
             }
+
+            return View(findProvider);
         }
 
 
@@ -93,7 +98,7 @@ namespace AssuncaoDistribution.Controllers
             {
                 throw new Exception("Provider not found in database");
             }
-           
+
         }
 
         [HttpGet]
@@ -116,22 +121,33 @@ namespace AssuncaoDistribution.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete (Provider provider)
+        public IActionResult Delete(Provider provider)
         {
             if (ModelState.IsValid)
             {
-                _providerContext.DeleteProvider(provider);
 
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _providerContext.DeleteProvider(provider);
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbConcurrencyException e)
+                {
+                    return RedirectToAction(nameof(Error));
+                }
+                catch (NotFoundException e)
+                {
+                    return RedirectToAction(nameof(Error));
+                }
+
             }
 
             return View(provider);
 
         }
 
-
-        [Route("error/{id:length(3,3)}")]
-        public IActionResult Error (int? id)
+    
+        public IActionResult Error(int? id)
         {
             var errorModel = new ErrorViewModel();
 
@@ -160,6 +176,5 @@ namespace AssuncaoDistribution.Controllers
             }
             return View(errorModel);
         }
-
     }
 }

@@ -92,5 +92,33 @@ namespace AssuncaoDistribution.Controllers
             }
         }
 
+        
+        [HttpGet]
+        public IActionResult Delete (int id)
+        {
+            var hasCli = _clientContext.HasClient(id);
+
+            if (hasCli)
+            {
+                var client = _clientContext.FindClient(id);
+                return View(client);
+            }
+            else
+            {
+                throw new Exception("Client not find in database, please try again");
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete (Client client)
+        {
+            if(ModelState.IsValid)
+            {
+                _clientContext.DeleteClient(client);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(client);
+        }
     }
 }
