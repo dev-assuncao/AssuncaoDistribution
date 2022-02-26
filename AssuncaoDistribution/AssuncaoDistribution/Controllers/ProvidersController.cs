@@ -133,11 +133,11 @@ namespace AssuncaoDistribution.Controllers
                 }
                 catch (DbConcurrencyException e)
                 {
-                    return RedirectToAction(nameof(Error));
+                    return RedirectToAction(nameof(Error), new { id = 409, message = e.Message });
                 }
                 catch (NotFoundException e)
                 {
-                    return RedirectToAction(nameof(Error));
+                    return RedirectToAction(nameof(Error), new { id = 404, message = e.Message});
                 }
 
             }
@@ -146,34 +146,16 @@ namespace AssuncaoDistribution.Controllers
 
         }
 
-    
-        public IActionResult Error(int? id)
+        [Route("error/{id:length(3,3)}")]
+        public IActionResult Error(int? id, string message)
         {
-            var errorModel = new ErrorViewModel();
+            var errorModel = new ErrorViewModel()
+            {
+                ErrorCode = id.Value,
+                Title = "An error occurred",         
+                Message = message
+            };
 
-
-            if (id.Value == 500)
-            {
-                errorModel.ErrorCode = id.Value;
-                errorModel.Title = "An error ocurred!";
-                errorModel.Message = "An error ocurred! Please, try again later or contact our suport";
-            }
-            else if (id.Value == 404)
-            {
-                errorModel.ErrorCode = id.Value;
-                errorModel.Title = "Page not found";
-                errorModel.Message = "This page not exists!";
-            }
-            else if (id.Value == 403)
-            {
-                errorModel.ErrorCode = id.Value;
-                errorModel.Title = "Access denied";
-                errorModel.Message = "You not have permission to do this";
-            }
-            else
-            {
-                return StatusCode(404);
-            }
             return View(errorModel);
         }
     }

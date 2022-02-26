@@ -120,5 +120,36 @@ namespace AssuncaoDistribution.Controllers
             }
             return View(client);
         }
+
+
+        public IActionResult Error(int? id, string message)
+        {
+            var errorModel = new ErrorViewModel();
+
+
+            if (id.Value == 500)
+            {
+                errorModel.ErrorCode = id.Value;
+                errorModel.Title = "An error ocurred!";
+                errorModel.Message = "An error ocurred! Please, try again later or contact our suport";
+            }
+            else if (id.Value == 404)
+            {
+                errorModel.ErrorCode = id.Value;
+                errorModel.Title = "Page not found";
+                errorModel.Message = "This page not exists!";
+            }
+            else if (id.Value == 403)
+            {
+                errorModel.ErrorCode = id.Value;
+                errorModel.Title = "Access denied";
+                errorModel.Message = "You not have permission to do this";
+            }
+            else
+            {
+                return StatusCode(404);
+            }
+            return View(errorModel);
+        }
     }
 }
