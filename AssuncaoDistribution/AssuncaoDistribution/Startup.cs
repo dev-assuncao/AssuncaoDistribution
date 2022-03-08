@@ -1,14 +1,15 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using AssuncaoDistribution.Data;
 using AssuncaoDistribution.Services;
-using Pomelo.EntityFrameworkCore.MySql;
 using Microsoft.EntityFrameworkCore;
+using AssuncaoDistribution.Areas.Identity.Data;
 using System;
+using Microsoft.AspNetCore.Identity;
+using Pomelo.EntityFrameworkCore.MySql;
 
 namespace AssuncaoDistribution
 {
@@ -24,6 +25,7 @@ namespace AssuncaoDistribution
                 .AddEnvironmentVariables();
 
 
+
             Configuration = builder.Build();
         }
 
@@ -36,7 +38,18 @@ namespace AssuncaoDistribution
             services.AddScoped<ProductServices>();
             services.AddScoped<ProviderServices>();
             services.AddScoped<ClientServices>();
-            services.AddDbContext<AssuncaoDistributionContext>(options => options.UseMySql(Configuration.GetConnectionString("AssuncaoDistributionContext")));
+            services.AddDbContext<AssuncaoDistributionContext>(options => options.UseMySql(Configuration["ConnectionStrings:AssuncaoDistributionContext"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:AssuncaoDistributionContext"])));
+
+
+            services.AddDbContext<IdentityContext>(options =>
+                    options.UseMySql(
+                        Configuration["ConnectionStrings:IdentityContextConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:IdentityContextConnection"])));
+
+
+
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddDefaultUI()
+                .AddEntityFrameworkStores<IdentityContext>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SeedingService seedingService)
@@ -58,7 +71,7 @@ namespace AssuncaoDistribution
 
             app.UseRouting();
 
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
