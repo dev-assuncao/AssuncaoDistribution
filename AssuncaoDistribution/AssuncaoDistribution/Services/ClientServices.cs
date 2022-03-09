@@ -71,7 +71,7 @@ namespace AssuncaoDistribution.Services
                 throw new Exception("Not find client to delete");
             }
 
-            _clientContext.Clients.Remove(client);
+            _clientContext.Remove(client);
             _clientContext.SaveChanges();
         }
 

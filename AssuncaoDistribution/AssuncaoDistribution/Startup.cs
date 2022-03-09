@@ -23,15 +23,14 @@ namespace AssuncaoDistribution
                 .AddJsonFile(path: "appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile(path: $"appsettings.{hostEnvironment.EnvironmentName}.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables();
-
-
-
             Configuration = builder.Build();
         }
 
        
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddRazorPages();
             services.AddControllersWithViews();
 
             services.AddScoped<SeedingService>();
@@ -70,7 +69,6 @@ namespace AssuncaoDistribution
             app.UseStaticFiles();
 
             app.UseRouting();
-
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -79,6 +77,7 @@ namespace AssuncaoDistribution
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }
