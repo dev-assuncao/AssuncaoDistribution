@@ -44,9 +44,16 @@ namespace AssuncaoDistribution.Services
                 throw new ApplicationException("Already client in database");
             }
 
-            _clientContext.Clients.Add(client);
+            try
+            {
+                _clientContext.Clients.Add(client);
+                _clientContext.SaveChanges();
+            }
+            catch (DbConcurrencyException e)
+            {
+                throw new DbConcurrencyException(e.Message);
+            }
 
-            _clientContext.SaveChanges();
         }
 
         public void UpdateClient (Client client)
@@ -58,21 +65,38 @@ namespace AssuncaoDistribution.Services
             {
                 throw new NotFoundException("Not find client in database to update");
             }
-            _clientContext.Clients.Update(client);
-            _clientContext.SaveChanges();
-        }
 
-        public void DeleteClient (Client client)
-        {
-            var hasClient = _clientContext.Clients.Any(x => x.Id == client.Id);
-
-            if (!hasClient)
+            try
             {
-                throw new Exception("Not find client to delete");
+                _clientContext.Clients.Update(client);
+                _clientContext.SaveChanges();
+            }
+            catch (DbConcurrencyException e)
+            {
+                throw new DbConcurrencyException(e.Message);
             }
 
-            _clientContext.Remove(client);
-            _clientContext.SaveChanges();
+        }
+
+        public void DeleteClient (int id)
+        {
+            var hasCli = _clientContext.Clients.Any(x => x.Id == id);
+
+            if (!hasCli)
+            {
+                throw new NotFoundException("Client not found in database, please try again soon");
+            }
+            try
+            {
+                var client = _clientContext.Clients.FirstOrDefault(x => x.Id == id);
+                _clientContext.Remove(client);
+                _clientContext.SaveChanges();
+            }
+            catch (DbConcurrencyException e)
+            {
+                throw new DbConcurrencyException(e.Message);
+            }
+
         }
     }
 }

@@ -41,10 +41,19 @@ namespace AssuncaoDistribution.Services
 
             if (hasProv)
             {
-                throw new Exception("Provider already register in database");
+                throw new ApplicationException("Provider already register in database");
             }
-            _providerContext.Add(provider);
-            _providerContext.SaveChanges();
+
+            try
+            {
+                _providerContext.Add(provider);
+                _providerContext.SaveChanges();
+            }
+            catch (DbConcurrencyException e)
+            {
+                throw new DbConcurrencyException(e.Message);
+            }
+
         }
 
 
@@ -57,9 +66,16 @@ namespace AssuncaoDistribution.Services
                 throw new NotFoundException("Provider not found in database");
             }
 
-            _providerContext.Update(provider);
+            try
+            {
+                _providerContext.Update(provider);
+                _providerContext.SaveChanges();
+            }
+            catch (DbConcurrencyException e)
+            {
+                throw new DbConcurrencyException(e.Message);
+            }
 
-            _providerContext.SaveChanges();
         }
 
         public void DeleteProvider (Provider provider)
@@ -70,8 +86,17 @@ namespace AssuncaoDistribution.Services
             {
                 throw new NotFoundException("Provider do not find in database");
             }
-            _providerContext.Remove(provider);
-            _providerContext.SaveChanges();
+
+            try
+            {
+                _providerContext.Remove(provider);
+                _providerContext.SaveChanges();
+            }
+            catch (DbConcurrencyException e)
+            {
+                throw new DbConcurrencyException(e.Message);
+            }
+
         }
 
     }

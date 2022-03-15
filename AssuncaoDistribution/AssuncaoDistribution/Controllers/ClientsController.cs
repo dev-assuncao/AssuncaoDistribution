@@ -2,6 +2,7 @@
 using AssuncaoDistribution.Services;
 using AssuncaoDistribution.Models;
 using System;
+using AssuncaoDistribution.Services.Exceptions;
 
 namespace AssuncaoDistribution.Controllers
 {
@@ -37,7 +38,7 @@ namespace AssuncaoDistribution.Controllers
             if (ModelState.IsValid)
             {
                 _clientContext.InsertClient(client);
-               return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
             }
 
             return View(client);
@@ -62,7 +63,7 @@ namespace AssuncaoDistribution.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit (Client client)
+        public IActionResult Edit(Client client)
         {
             if (ModelState.IsValid)
             {
@@ -77,7 +78,7 @@ namespace AssuncaoDistribution.Controllers
         }
 
 
-        public IActionResult Details (int id)
+        public IActionResult Details(int id)
         {
             var hasCli = _clientContext.HasClient(id);
 
@@ -92,62 +93,54 @@ namespace AssuncaoDistribution.Controllers
             }
         }
 
-        
-        public IActionResult Delete (int id)
-        {
-            var hasCli = _clientContext.HasClient(id);
 
+        public IActionResult Delete(int? id)
+        {
+            var hasCli = _clientContext.HasClient(id.Value);
             if (hasCli)
             {
-                var client = _clientContext.FindClient(id);
+                var client = _clientContext.FindClient(id.Value);
                 return View(client);
             }
             else
             {
-                throw new Exception("Client not find in database, please try again");
+                return RedirectToAction(nameof(Error), new { id = 404, message = ("Client not found in database") });
             }
+
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(Client client)
+        public IActionResult Delete(int id)
         {
-            if(ModelState.IsValid)
+            try
             {
-                _clientContext.DeleteClient(client);
+                _clientContext.DeleteClient(id);
                 return RedirectToAction(nameof(Index));
             }
-            return View(client);
+            catch (DbConcurrencyException e)
+            {
+                return RedirectToAction(nameof(Error), new { id = 409, message = e.Message });
+            }
+            catch (NotFoundException e)
+
+            {
+                return RedirectToAction(nameof(Error), new { id = 404, message = e.Message });
+            }
+
         }
 
 
         public IActionResult Error(int? id, string message)
         {
-            var errorModel = new ErrorViewModel();
+            var errorModel = new ErrorViewModel()
+            {
+                ErrorCode = id.Value,
+                Title = "An error occurred",
+                Message = message
+            };
 
-
-            if (id.Value == 500)
-            {
-                errorModel.ErrorCode = id.Value;
-                errorModel.Title = "An error ocurred!";
-                errorModel.Message = "An error ocurred! Please, try again later or contact our suport";
-            }
-            else if (id.Value == 404)
-            {
-                errorModel.ErrorCode = id.Value;
-                errorModel.Title = "Page not found";
-                errorModel.Message = "This page not exists!";
-            }
-            else if (id.Value == 403)
-            {
-                errorModel.ErrorCode = id.Value;
-                errorModel.Title = "Access denied";
-                errorModel.Message = "You not have permission to do this";
-            }
-            else
-            {
-                return StatusCode(404);
-            }
             return View(errorModel);
         }
     }
