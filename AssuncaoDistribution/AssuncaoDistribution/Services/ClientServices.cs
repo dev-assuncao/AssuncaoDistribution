@@ -74,7 +74,5 @@ namespace AssuncaoDistribution.Services
             _clientContext.Remove(client);
             _clientContext.SaveChanges();
         }
-
-
     }
 }

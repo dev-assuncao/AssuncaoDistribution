@@ -93,7 +93,6 @@ namespace AssuncaoDistribution.Controllers
         }
 
         
-        [HttpGet]
         public IActionResult Delete (int id)
         {
             var hasCli = _clientContext.HasClient(id);
@@ -111,7 +110,7 @@ namespace AssuncaoDistribution.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete (Client client)
+        public IActionResult Delete(Client client)
         {
             if(ModelState.IsValid)
             {

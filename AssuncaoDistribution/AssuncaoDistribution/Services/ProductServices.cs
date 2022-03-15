@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using AssuncaoDistribution.Data;
 using AssuncaoDistribution.Models;
 using AssuncaoDistribution.Services.Exceptions;
@@ -65,7 +64,7 @@ namespace AssuncaoDistribution.Services
 
         public void DeleteProduct(Products product)
         {
-            bool hasProduct = _productContext.Products.Any(x => x.Id == product.Id);
+            var hasProduct = _productContext.Products.Any(x => x.Id == product.Id);
 
             if (!hasProduct)
             {

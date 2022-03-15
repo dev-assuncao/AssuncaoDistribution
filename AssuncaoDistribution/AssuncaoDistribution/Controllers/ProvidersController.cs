@@ -23,6 +23,7 @@ namespace AssuncaoDistribution.Controllers
             return View(allProviders);
         }
 
+
         [HttpGet]
         public IActionResult Create()
         {
@@ -121,7 +122,7 @@ namespace AssuncaoDistribution.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(Provider provider)
+        public IActionResult Delete (Provider provider)
         {
             if (ModelState.IsValid)
             {

@@ -11,14 +11,38 @@
 <body>
     <h1 class="text-danger"> Do you like to delete this client? @Model.Name</h1>
 
-    <partial name="_ClientPartial" />
+    <form method="post" asp-action="Delete">
+        <dl>
+            <dd class="hide">@Html.DisplayFor(model => model.Id)</dd>
+            <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+            <dd>@Html.DisplayFor(model => model.Name)</dd>
+            <dt>@Html.DisplayNameFor(model => model.ContactCli)</dt>
+            <dd>@Html.DisplayFor(model => model.ContactCli)</dd>
+            <dt>@Html.DisplayNameFor(model => model.Birthday)</dt>
+            <dd>@Html.DisplayFor(model => model.Birthday)</dd>
+            <dt>@Html.DisplayNameFor(model => model.Address)</dt>
+            <dd>@Html.DisplayFor(model => model.Address)</dd>
+            <dt>@Html.DisplayNameFor(model => model.Cep)</dt>
+            <dd>@Html.DisplayFor(model => model.Cep)</dd>
+            <dt>@Html.DisplayNameFor(model => model.City)</dt>
+            <dd>@Html.DisplayFor(model => model.City)</dd>
+            <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+            <dd>@Html.DisplayFor(model => model.Email)</dd>
+            <dt>@Html.DisplayNameFor(model => model.Phone)</dt>
+            <dd>@Html.DisplayFor(model => model.Phone)</dd>
+            <dt>@Html.DisplayNameFor(model => model.Uf)</dt>
+            <dd>@Html.DisplayFor(model => model.Uf)</dd>
+            <dt>@Html.DisplayNameFor(model => model.CnpjOrCpf)</dt>
+            <dd>@Html.DisplayFor(model => model.CnpjOrCpf)</dd>
+        </dl>
 
-    <div class="row">
-        <form  asp-action="Delete" method="post">
             <div class="form-group">
-                <input type="submit" class="btn btn-sm bg-danger text-white " value="Delete" />
+                <input type="submit" class="btn btn-sm bg-success text-white bg-danger" value="Delete" />
             </div>
-        </form>
-    </div>
+    </form>
+    
+
+
+
 </body>
 </html>

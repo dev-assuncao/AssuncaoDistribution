@@ -8,8 +8,6 @@ namespace AssuncaoDistribution.Models
 {
     public class Client
     {
-        private const string V = "{0:00000-000}";
-
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Please inform your Name")]
