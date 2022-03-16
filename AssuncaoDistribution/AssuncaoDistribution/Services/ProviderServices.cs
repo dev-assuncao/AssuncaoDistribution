@@ -5,9 +5,12 @@ using System.Threading.Tasks;
 using AssuncaoDistribution.Data;
 using AssuncaoDistribution.Models;
 using AssuncaoDistribution.Services.Exceptions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AssuncaoDistribution.Services
 {
+
+    
     public class ProviderServices
     {
         private readonly AssuncaoDistributionContext _providerContext;

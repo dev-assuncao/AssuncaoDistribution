@@ -4,9 +4,11 @@ using AssuncaoDistribution.Services;
 using AssuncaoDistribution.Models;
 using AssuncaoDistribution.Services.Exceptions;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AssuncaoDistribution.Controllers
 {
+    [Authorize]
     public class ProvidersController : Controller
     {
         private readonly ProviderServices _providerContext;

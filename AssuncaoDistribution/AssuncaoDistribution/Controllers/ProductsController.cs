@@ -5,10 +5,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using AssuncaoDistribution.Services;
 using AssuncaoDistribution.Models;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace AssuncaoDistribution.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         private readonly ProductServices _productServices;

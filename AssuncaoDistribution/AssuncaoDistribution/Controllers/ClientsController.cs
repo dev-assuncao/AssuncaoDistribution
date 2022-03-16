@@ -3,9 +3,11 @@ using AssuncaoDistribution.Services;
 using AssuncaoDistribution.Models;
 using System;
 using AssuncaoDistribution.Services.Exceptions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AssuncaoDistribution.Controllers
 {
+    [Authorize]
     public class ClientsController : Controller
     {
         private readonly ClientServices _clientContext;
@@ -33,6 +35,7 @@ namespace AssuncaoDistribution.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create(Client client)
         {
             if (ModelState.IsValid)
@@ -46,6 +49,7 @@ namespace AssuncaoDistribution.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(int id)
         {
             var findCli = _clientContext.FindClient(id);
@@ -63,6 +67,7 @@ namespace AssuncaoDistribution.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(Client client)
         {
             if (ModelState.IsValid)
@@ -78,6 +83,7 @@ namespace AssuncaoDistribution.Controllers
         }
 
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Details(int id)
         {
             var hasCli = _clientContext.HasClient(id);
@@ -93,7 +99,7 @@ namespace AssuncaoDistribution.Controllers
             }
         }
 
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int? id)
         {
             var hasCli = _clientContext.HasClient(id.Value);
