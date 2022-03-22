@@ -37,6 +37,7 @@ namespace AssuncaoDistribution
             services.AddScoped<ProductServices>();
             services.AddScoped<ProviderServices>();
             services.AddScoped<ClientServices>();
+            services.AddScoped<PurchaseOrderServices>();
             services.AddDbContext<AssuncaoDistributionContext>(options => options.UseMySql(Configuration["ConnectionStrings:AssuncaoDistributionContext"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:AssuncaoDistributionContext"])));
 
 
