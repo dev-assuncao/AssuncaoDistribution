@@ -1,5 +1,42 @@
-﻿@{
-    ViewData["Title"] = "Purchase Order";
-}
+﻿@model IEnumerable<PurchaseOrder>
 
-<h1> Purchase Order </h1>
+
+<!DOCTYPE html>
+<html>
+<head>
+    @{
+        ViewData["Title"] = "Purchase Order";
+    }
+    <meta charset="utf-8": />
+</head>
+<body>
+    <h1> Purchase Order </h1>
+
+    <div class="row col-md-10">
+        <table class="table">
+            <thead class="text-center">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.Providers.CorporateName)</th>
+                    <th>@Html.DisplayNameFor(model => model.PurchDate)</th>
+                    <th>@Html.DisplayNameFor(model => model.PriceOrder)</th>
+                </tr>
+            </thead>
+            @foreach (PurchaseOrder purchaseOrder in Model)
+            {
+                <tbody class="text-center">
+                    <tr>
+                        <td>@Html.DisplayFor(model => purchaseOrder.Id)</td>
+                        <td>@Html.DisplayFor(model => purchaseOrder.Providers)</td>
+                        <td>@Html.DisplayFor(model => purchaseOrder.PurchDate)</td>
+                        <td>@Html.DisplayFor(model => purchaseOrder.PriceOrder)</td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+</body>
+</html>
+
+
+

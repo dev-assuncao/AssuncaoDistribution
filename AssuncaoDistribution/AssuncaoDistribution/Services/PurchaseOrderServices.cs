@@ -17,10 +17,12 @@ namespace AssuncaoDistribution.Services
         }
 
 
-        public ICollection<PurchaseOrder> FindAllPurchaseOrders ()
+        public ICollection<PurchaseOrder> FindAllPurchaseOrders()
         {
             return _purchaseOrderContext.PurchaseOrders.ToList();
         }
+
+
 
     }
 }
