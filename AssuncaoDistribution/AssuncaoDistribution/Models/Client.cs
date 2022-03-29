@@ -20,7 +20,7 @@ namespace AssuncaoDistribution.Models
 
         [Required(ErrorMessage = "Please inform your Birthday")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}")]
+        [DisplayFormat(DataFormatString ="{0:MM-dd-yyyy}")]
         public DateTime Birthday { get; set; }
 
         [Required(ErrorMessage = "Please fill the field Address")]
