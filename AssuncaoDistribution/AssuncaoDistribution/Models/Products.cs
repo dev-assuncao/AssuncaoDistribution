@@ -21,7 +21,7 @@ namespace AssuncaoDistribution.Models
 
         [Display(Name = "Price")]
    
-        [DisplayFormat()]
+        [DisplayFormat(DataFormatString = "R${0:F2}")]
         public double PriceProd { get; set; }
 
         [ForeignKey("Measures")]

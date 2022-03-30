@@ -8,7 +8,7 @@ namespace AssuncaoDistribution.Models.ViewModels
 {
     public class PurchaseOrdersViewModel
     {
-        public ICollection<PurchaseOrder> PurchaseOrders { get; set; }
-        public Provider Providers { get; set; }
+        public PurchaseOrder PurchaseOrder { get; set; }
+        public ICollection<Provider> Providers { get; set; }
     }
 }

@@ -10,9 +10,10 @@
     <meta charset="utf-8": />
 </head>
 <body>
-    <h1> Purchase Order </h1>
+    <h1>Purchase Orders  -  <a asp-action="Create" asp-controller="PurchaseOrders" class="btn btn-sm bg-success text-white">Generate Purchase Order</a></h1>
 
     <div class="row col-md-10">
+
         <table class="table">
             <thead class="text-center">
                 <tr>
@@ -30,6 +31,7 @@
                         <td>@Html.DisplayFor(model => purchaseOrder.Providers.CorporateName)</td>
                         <td>@Html.DisplayFor(model => purchaseOrder.PurchDate)</td>
                         <td>@Html.DisplayFor(model => purchaseOrder.PriceOrder)</td>
+                        <td><a asp-action="Index" asp-controller="PurchaseOrdemItems" class="btn btn-sm bg-success text-white">Issue Purchase Order</a></td>
                     </tr>
                 </tbody>
             }

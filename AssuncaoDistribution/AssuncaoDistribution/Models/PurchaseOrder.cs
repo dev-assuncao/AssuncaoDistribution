@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
@@ -12,17 +9,18 @@ namespace AssuncaoDistribution.Models
         public int Id { get; set; }
         public Provider Providers { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:MM-dd-yyyy}")]
-        [DataType(DataType.DateTime)]
         [Display(Name = "Purch Date")]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:MM-dd-yyyy}")]
         public DateTime PurchDate { get; set; }
 
         [DisplayFormat(DataFormatString = "R${0:F2}")]
 
-        [Display(Name ="Price Order")]
+        [Display(Name = "Price Order")]
         public double PriceOrder { get; set; }
 
         [ForeignKey("Providers")]
+        [Display(Name ="Provider")]
         public int ProviderId { get; set; }
 
 

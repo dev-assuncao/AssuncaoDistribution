@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using AssuncaoDistribution.Services;
 using AssuncaoDistribution.Models.ViewModels;
+using AssuncaoDistribution.Models;
 
 namespace AssuncaoDistribution.Controllers
 {
@@ -28,5 +29,30 @@ namespace AssuncaoDistribution.Controllers
             var purchase = _purchaseOrderContext.AllPurchaseOrders();
             return View(purchase);
         }
+
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            var provider = _providersContext.AllProviders();
+
+            var viewModel = new PurchaseOrdersViewModel { Providers = provider };
+
+            return View(viewModel);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(PurchaseOrder purchase)
+        {
+            if (ModelState.IsValid)
+            {
+                _purchaseOrderContext.CreatePurchaseOrder(purchase);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(purchase);
+        }
+
     }
 }
