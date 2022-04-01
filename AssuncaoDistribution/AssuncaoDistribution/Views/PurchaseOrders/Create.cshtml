@@ -17,18 +17,21 @@
     <br />
 
     <div class="col-md-10 row">
-        <form asp-action="Create" method="post" >
-            <div asp-validation-summary="All" class="text-danger"></div>
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="All" class="text-danger">
+            </div>
+
             <div class="form-group row">
                 <label asp-for="PurchaseOrder.ProviderId" class="col-form-label"></label>
                 <div class="col-md-auto">
                     <select asp-for="PurchaseOrder.ProviderId" asp-items="@(new SelectList(Model.Providers, "Id", "CorporateName"))" class="form-control"></select>
                 </div>
+
             </div>
             <div class="form-group row">
                 <label asp-for="PurchaseOrder.PurchDate" class="col-form-label"></label>
                 <div class="col-md-auto">
-                    <input type="date" asp-for="PurchaseOrder.PurchDate" class="form-control" />
+                    <input asp-for="PurchaseOrder.PurchDate" class="form-control" />
                     <span asp-validation-for="PurchaseOrder.PurchDate" class="text-danger"></span>
                 </div>
             </div>
@@ -38,15 +41,15 @@
                     <input asp-for="PurchaseOrder.PriceOrder" class="form-control" />
                     <span asp-validation-for="PurchaseOrder.PriceOrder" class="text-danger"></span>
                 </div>
-                <div class="col-md-auto">
-                    <input type="submit" class="btn bg-success btn-sm text-white" value="Generate"/>
+                <div class="form-group">
+                    <input type="submit" formmethod="post" class="btn bg-success btn-sm text-white" value="Generate" />
                 </div>
             </div>
         </form>
     </div>
 </body>
-@section Scripts
-    {
+
+@section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }

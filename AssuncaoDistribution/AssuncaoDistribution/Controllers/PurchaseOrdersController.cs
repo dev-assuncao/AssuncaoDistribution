@@ -36,7 +36,7 @@ namespace AssuncaoDistribution.Controllers
         {
             var provider = _providersContext.AllProviders();
 
-            var viewModel = new PurchaseOrdersViewModel { Providers = provider };
+            PurchaseOrdersViewModel viewModel = new PurchaseOrdersViewModel { Providers = provider };
 
             return View(viewModel);
         }
@@ -44,11 +44,14 @@ namespace AssuncaoDistribution.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(PurchaseOrder purchase)
+        public IActionResult Create(PurchaseOrdersViewModel purchase)
         {
+
             if (ModelState.IsValid)
             {
-                _purchaseOrderContext.CreatePurchaseOrder(purchase);
+                var purchaseOrder = new PurchaseOrder { Id = purchase.PurchaseOrder.Id, PurchDate = purchase.PurchaseOrder.PurchDate, ProviderId = purchase.PurchaseOrder.ProviderId, PriceOrder = purchase.PurchaseOrder.PriceOrder };
+
+                _purchaseOrderContext.CreatePurchaseOrder(purchaseOrder);
                 return RedirectToAction(nameof(Index));
             }
             return View(purchase);

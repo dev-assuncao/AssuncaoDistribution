@@ -30,7 +30,7 @@ namespace AssuncaoDistribution.Services
 
             if(hasPurchase)
             {
-                throw new ApplicationException("Purchase Order already registered in database");
+                throw new DbConcurrencyException("Purchase Order already registered in database");
             }
 
             try
