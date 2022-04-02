@@ -45,5 +45,11 @@ namespace AssuncaoDistribution.Services
         }
 
 
+        public PurchaseOrder FindPurchaseOrder(int id)
+        {
+            return _purchaseOrderContext.PurchaseOrders.Include(obj => obj.Providers).FirstOrDefault(x => x.Id == id);
+        }
+
+
     }
 }
