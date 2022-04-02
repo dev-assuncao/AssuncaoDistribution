@@ -20,9 +20,12 @@
     <div class="col-md-10">
         <form method="post" asp-action="Edit">
             <div asp-validation-summary="All" class="text-danger"></div>
+
             <div class="form-group row">
                 <label asp-for="PurchaseOrder.Id" class="col-form-label"></label>
-                <div class="col-md-auto"
+                <div class="col-sm-1">
+                    <input asp-for="PurchaseOrder.Id" readonly="@true" class="form-control"/>
+                </div>
             </div>
             <div class="form-group row">
                 <label asp-for="PurchaseOrder.ProviderId" class="col-form-label"></label>

@@ -1,11 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace AssuncaoDistribution.Models
 {
     public class PurchaseOrder
     {
+
+        [ReadOnly(true)]
         public int Id { get; set; }
         public Provider Providers { get; set; }
 

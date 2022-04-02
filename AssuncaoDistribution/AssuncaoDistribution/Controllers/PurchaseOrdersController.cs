@@ -1,8 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using AssuncaoDistribution.Services;
 using AssuncaoDistribution.Models.ViewModels;
@@ -87,6 +83,40 @@ namespace AssuncaoDistribution.Controllers
             }
         }
 
+
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult Edit(PurchaseOrdersViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var purchase = new PurchaseOrder
+                {
+                    Id = model.PurchaseOrder.Id,
+                    ProviderId = model.PurchaseOrder.ProviderId,
+                    PurchDate = model.PurchaseOrder.PurchDate,
+                    PriceOrder = model.PurchaseOrder.PriceOrder
+                };
+
+                try
+                {
+                    _purchaseOrderContext.UpdatePurchaseOrder(purchase);
+                    return RedirectToAction(nameof(Index));
+                }
+                catch(DbConcurrencyException e)
+                {
+                    throw new DbConcurrencyException(e.Message);
+                }
+                catch(NotFoundException e)
+                {
+                    throw new NotFoundException(e.Message);
+                }
+            }
+
+            return View(model);
+        }
 
     }
 }

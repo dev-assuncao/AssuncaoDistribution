@@ -51,5 +51,28 @@ namespace AssuncaoDistribution.Services
         }
 
 
+        public void UpdatePurchaseOrder (PurchaseOrder purchaseOrder)
+        {
+            var hasPurchase = _purchaseOrderContext.PurchaseOrders.Any(x => x.Id == purchaseOrder.Id);
+
+            if (!hasPurchase)
+            {
+                throw new NotFoundException("Purchase not find in database");
+            }
+
+            try
+            {
+                _purchaseOrderContext.Update(purchaseOrder);
+
+                _purchaseOrderContext.SaveChanges();
+            }
+            catch(DbConcurrencyException e)
+            {
+                throw new DbConcurrencyException(e.Message);
+            }
+
+        }
+
+
     }
 }
