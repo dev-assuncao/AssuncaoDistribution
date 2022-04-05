@@ -118,5 +118,43 @@ namespace AssuncaoDistribution.Controllers
             return View(model);
         }
 
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var purchase = _purchaseOrderContext.FindPurchaseOrder(id);
+
+            return View(purchase);
+        }
+
+
+        [HttpPost]
+        public IActionResult Delete(int id, PurchaseOrder purchase)
+        {
+            if (id != purchase.Id)
+            {
+                throw new NotFoundException("Id mismatch");
+            }
+
+
+            try
+            {
+                var findPurch = _purchaseOrderContext.FindPurchaseOrder(id);
+
+                _purchaseOrderContext.DeletePurchaseOrder(findPurch);
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (NotFoundException e)
+            {
+                throw new NotFoundException(e.Message);
+            }
+            catch (DbConcurrencyException e)
+            {
+                throw new DbConcurrencyException(e.Message);
+            }
+
+        }
+
     }
 }

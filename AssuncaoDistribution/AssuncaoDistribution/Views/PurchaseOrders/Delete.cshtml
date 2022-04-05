@@ -6,7 +6,7 @@
 
 <html>
 <head>
-    @{ 
+    @{
 
         ViewData["Title"] = "Delete";
     }
@@ -16,11 +16,21 @@
 </head>
 <body>
 
+    <div class="dl-mg-table">
+        <dl>
+            <dt>@Html.DisplayNameFor(model => model.Id)</dt>
+            <dd>@Html.DisplayFor(model => model.Id)</dd>
+            <dt>@Html.DisplayNameFor(model => model.Providers.CorporateName)</dt>
+            <dd>@Html.DisplayFor(model => model.Providers.CorporateName)</dd>
+            <dt>@Html.DisplayNameFor(model => model.PurchDate)</dt>
+            <dd>@Html.DisplayFor(model => model.PurchDate)</dd>
+            <dt>@Html.DisplayNameFor(model => model.PriceOrder)</dt>
+            <dd>@Html.DisplayFor(model => model.PriceOrder)</dd>
+        </dl>
 
-
-
+        <form method="post" asp-action="Delete">
+            <input type="submit" class="btn-sm btn-danger text-white"  asp-route-id="@Model.Id"/>
+        </form>
+    </div>
 </body>
-
-
-
 </html>

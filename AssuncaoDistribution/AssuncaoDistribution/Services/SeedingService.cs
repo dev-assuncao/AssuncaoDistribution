@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using AssuncaoDistribution.Models;
 using AssuncaoDistribution.Data;
 
@@ -35,8 +33,8 @@ namespace AssuncaoDistribution.Services
             SalesOrder s1 = new SalesOrder(001, c1,  new DateTime(2022,01,01), 50.00);
             SalesOrder s2 = new SalesOrder(002, c2, new DateTime(2022, 01, 02), 150.00);
 
-            Products pr1 = new Products(001, "Plastic", UnitsMeasures.Kilograms, 20, 5.00);
-            Products pr2 = new Products(002, "Paper", UnitsMeasures.Kilograms, 20, 10.00);
+            Products pr1 = new Products(001, "Paper", UnitsMeasures.Kilograms, 20, 5.00);
+            Products pr2 = new Products(002, "Plastic", UnitsMeasures.Kilograms, 20, 10.00);
 
             ItemsOrderSale is1 = new ItemsOrderSale(001, 10, 50.00, s1, pr1);
             ItemsOrderSale is2 = new ItemsOrderSale(002, 15, 150.00, s2, pr2);

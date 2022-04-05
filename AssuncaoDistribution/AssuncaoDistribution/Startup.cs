@@ -7,9 +7,8 @@ using AssuncaoDistribution.Data;
 using AssuncaoDistribution.Services;
 using Microsoft.EntityFrameworkCore;
 using AssuncaoDistribution.Areas.Identity.Data;
-using System;
 using Microsoft.AspNetCore.Identity;
-using Pomelo.EntityFrameworkCore.MySql;
+
 
 namespace AssuncaoDistribution
 {
@@ -38,6 +37,7 @@ namespace AssuncaoDistribution
             services.AddScoped<ProviderServices>();
             services.AddScoped<ClientServices>();
             services.AddScoped<PurchaseOrderServices>();
+            services.AddScoped<PurchaseOrderItemsServices>();
             services.AddDbContext<AssuncaoDistributionContext>(options => options.UseMySql(Configuration["ConnectionStrings:AssuncaoDistributionContext"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:AssuncaoDistributionContext"])));
 
 

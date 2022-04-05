@@ -32,7 +32,7 @@
                         <td>@Html.DisplayFor(model => purchaseOrder.PurchDate)</td>
                         <td>@Html.DisplayFor(model => purchaseOrder.PriceOrder)</td>
                         <td>
-                            <a asp-action="Index" asp-controller="PurchaseOrdemItems" class="btn btn-sm bg-success text-white">Issue Purchase Order</a>
+                            <a asp-action="Create" asp-controller="PurchaseOrdemItems" class="btn btn-sm bg-success text-white">Issue Purchase Order</a>
                             <a asp-action="Edit" asp-controller="PurchaseOrders" class="btn btn-sm bg-warning text-white" asp-route-id="@purchaseOrder.Id"> Edit</a>
                             <a asp-action="Delete" asp-controller="PurchaseOrders" class="btn btn-sm bg-danger text-white" asp-route-id="@purchaseOrder.Id"> Delete</a>
 

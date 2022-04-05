@@ -47,7 +47,15 @@ namespace AssuncaoDistribution.Services
 
         public PurchaseOrder FindPurchaseOrder(int id)
         {
-            return _purchaseOrderContext.PurchaseOrders.Include(obj => obj.Providers).FirstOrDefault(x => x.Id == id);
+            try
+            {
+                return _purchaseOrderContext.PurchaseOrders.Include(obj => obj.Providers).FirstOrDefault(x => x.Id == id);
+            }
+            catch(NotFoundException)
+            {
+                throw new NotFoundException("Purchase not found in database");
+            }
+            
         }
 
 
@@ -70,6 +78,22 @@ namespace AssuncaoDistribution.Services
             {
                 throw new DbConcurrencyException(e.Message);
             }
+
+        }
+
+
+        public void DeletePurchaseOrder(PurchaseOrder purchase)
+        {
+            var hasPurchase = _purchaseOrderContext.PurchaseOrders.Any(x => x.Id == purchase.Id);
+
+            if (!hasPurchase)
+            {
+                throw new NotFoundException("Purchase Order not found in database");
+            }
+
+            _purchaseOrderContext.Remove(purchase);
+            _purchaseOrderContext.SaveChanges();
+
 
         }
 
