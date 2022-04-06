@@ -22,11 +22,17 @@
             </div>
 
             <div class="form-group row">
+                <label asp-for="PurchaseOrder.Cod" class="col-form-label"></label>
+                <div class="col-md-5">
+                    <input asp-for="PurchaseOrder.Cod" class="form-control" />
+                    <span asp-validation-for="PurchaseOrder.Cod" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
                 <label asp-for="PurchaseOrder.ProviderId" class="col-form-label"></label>
                 <div class="col-md-auto">
                     <select asp-for="PurchaseOrder.ProviderId" asp-items="@(new SelectList(Model.Providers, "Id", "CorporateName"))" class="form-control"></select>
                 </div>
-
             </div>
             <div class="form-group row">
                 <label asp-for="PurchaseOrder.PurchDate" class="col-form-label"></label>

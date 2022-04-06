@@ -61,9 +61,9 @@ namespace AssuncaoDistribution.Services
 
         public void UpdatePurchaseOrder (PurchaseOrder purchaseOrder)
         {
-            var hasPurchase = _purchaseOrderContext.PurchaseOrders.Any(x => x.Id == purchaseOrder.Id);
+            var hasPurchaseExisting = _purchaseOrderContext.PurchaseOrders.Any(x => x.Id == purchaseOrder.Id);
 
-            if (!hasPurchase)
+            if (!hasPurchaseExisting)
             {
                 throw new NotFoundException("Purchase not find in database");
             }
@@ -95,6 +95,12 @@ namespace AssuncaoDistribution.Services
             _purchaseOrderContext.SaveChanges();
 
 
+        }
+
+
+        public bool HasCod(int cod)
+        {
+            return _purchaseOrderContext.PurchaseOrders.Any(x => x.Cod == cod);
         }
 
 

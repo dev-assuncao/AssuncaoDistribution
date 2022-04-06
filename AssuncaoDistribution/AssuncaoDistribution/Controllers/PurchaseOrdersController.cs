@@ -4,6 +4,7 @@ using AssuncaoDistribution.Services;
 using AssuncaoDistribution.Models.ViewModels;
 using AssuncaoDistribution.Models;
 using AssuncaoDistribution.Services.Exceptions;
+using AssuncaoDistribution.Data;
 
 namespace AssuncaoDistribution.Controllers
 {
@@ -46,6 +47,17 @@ namespace AssuncaoDistribution.Controllers
 
             if (ModelState.IsValid)
             {
+
+                var hasCodPurchase = _purchaseOrderContext.HasCod(purchase.PurchaseOrder.Cod);
+
+                if (hasCodPurchase)
+                {
+                    ModelState.AddModelError(string.Empty, "This cod already registered in database");
+
+                    purchase.Providers = _providersContext.AllProviders();
+                    return View(purchase);
+                }
+
                 try
                 {
                     var purchaseOrder = new PurchaseOrder { Id = purchase.PurchaseOrder.Id, PurchDate = purchase.PurchaseOrder.PurchDate, ProviderId = purchase.PurchaseOrder.ProviderId, PriceOrder = purchase.PurchaseOrder.PriceOrder };
