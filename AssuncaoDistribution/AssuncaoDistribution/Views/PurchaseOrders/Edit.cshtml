@@ -23,9 +23,20 @@
 
             <div class="form-group row">
                 <label asp-for="PurchaseOrder.Id" class="col-form-label"></label>
-                <div class="col-sm-1">
+                <div class="col-md-2">
                     <input asp-for="PurchaseOrder.Id" readonly="@true" class="form-control"/>
                 </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="PurchaseOrder.Cod" class="col-form-label"></label>
+                <div class="col-md-auto">
+                    <input asp-for="PurchaseOrder.Cod" class="form-control" />
+                    <span asp-validation-for="PurchaseOrder.Cod" class="text-danger"></span>
+                </div>
+
+
+
             </div>
             <div class="form-group row">
                 <label asp-for="PurchaseOrder.ProviderId" class="col-form-label"></label>
@@ -51,15 +62,14 @@
                 <input type="submit" class="btn btn-sm bg-success text-white" value="Update" />
             </div>
         </form>
-
-
-
     </div>
 
-
-
 </body>
-
-
-
 </html>
+
+@section Scripts
+{
+@{ 
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

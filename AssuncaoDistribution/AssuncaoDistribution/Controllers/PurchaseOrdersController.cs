@@ -95,6 +95,7 @@ namespace AssuncaoDistribution.Controllers
                 var purchase = new PurchaseOrder
                 {
                     Id = model.PurchaseOrder.Id,
+                    Cod = model.PurchaseOrder.Cod,
                     ProviderId = model.PurchaseOrder.ProviderId,
                     PurchDate = model.PurchaseOrder.PurchDate,
                     PriceOrder = model.PurchaseOrder.PriceOrder

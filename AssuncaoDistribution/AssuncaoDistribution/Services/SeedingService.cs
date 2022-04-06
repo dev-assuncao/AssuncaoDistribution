@@ -36,14 +36,14 @@ namespace AssuncaoDistribution.Services
             Products pr1 = new Products(001, "Paper", UnitsMeasures.Kilograms, 20, 5.00);
             Products pr2 = new Products(002, "Plastic", UnitsMeasures.Kilograms, 20, 10.00);
 
-            ItemsOrderSale is1 = new ItemsOrderSale(001, 10, 50.00, s1, pr1);
-            ItemsOrderSale is2 = new ItemsOrderSale(002, 15, 150.00, s2, pr2);
+            ItemsOrderSale is1 = new ItemsOrderSale(1, 10, 50.00, s1, pr1);
+            ItemsOrderSale is2 = new ItemsOrderSale(2, 15, 150.00, s2, pr2);
 
-            PurchaseOrder po1 = new PurchaseOrder(001, p1, new DateTime(2022, 01, 10), 40.00);
-            PurchaseOrder po2 = new PurchaseOrder(002, p2, new DateTime(2022, 01, 11), 90.00);
+            PurchaseOrder po1 = new PurchaseOrder(1, 001,p1, new DateTime(2022, 01, 10), 40.00);
+            PurchaseOrder po2 = new PurchaseOrder(2, 002,p2, new DateTime(2022, 01, 11), 90.00);
 
-            PurchaseOrderItems pi1 = new PurchaseOrderItems(001, po1, pr1, 10, 4.00);
-            PurchaseOrderItems pi2 = new PurchaseOrderItems(002, po2, pr2, 10, 9.00);
+            PurchaseOrderItem pi1 = new PurchaseOrderItem(001, 001010, po1, pr1, 10, 4.00);
+            PurchaseOrderItem pi2 = new PurchaseOrderItem(002, 001020, po2, pr2, 10, 9.00);
 
             _context.Clients.AddRange(c1, c2);
             _context.Providers.AddRange(p1, p2);

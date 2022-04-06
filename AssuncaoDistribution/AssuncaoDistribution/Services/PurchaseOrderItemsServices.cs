@@ -14,7 +14,7 @@ namespace AssuncaoDistribution.Services
             _purchaseItemsContext = context;
         }
 
-        public ICollection<PurchaseOrderItems> FindAllPurchaseItems()
+        public ICollection<PurchaseOrderItem> FindAllPurchaseItems()
         {
               return  _purchaseItemsContext.PurchaseOrderItems.ToList();
         }

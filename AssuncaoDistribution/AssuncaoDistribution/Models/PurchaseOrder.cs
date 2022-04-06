@@ -10,6 +10,8 @@ namespace AssuncaoDistribution.Models
 
         [ReadOnly(true)]
         public int Id { get; set; }
+        [Required(ErrorMessage = "'Cod' field cannot be null")]
+        public int Cod { get; set; }
         public Provider Providers { get; set; }
 
         [Display(Name = "Purch Date")]
@@ -20,6 +22,7 @@ namespace AssuncaoDistribution.Models
         [DisplayFormat(DataFormatString = "R${0:F2}")]
 
         [Display(Name = "Price Order")]
+        [Required(ErrorMessage = "'Price Order' field cannot be null")]
         public double PriceOrder { get; set; }
 
         [ForeignKey("Providers")]
@@ -31,9 +34,10 @@ namespace AssuncaoDistribution.Models
         {
         }
 
-        public PurchaseOrder(int codPurch, Provider codPvd, DateTime purchDate, double priceOrder)
+        public PurchaseOrder(int codPurch, int cod, Provider codPvd, DateTime purchDate, double priceOrder)
         {
             Id = codPurch;
+            Cod = cod;
             Providers = codPvd;
             PurchDate = purchDate;
             PriceOrder = priceOrder;

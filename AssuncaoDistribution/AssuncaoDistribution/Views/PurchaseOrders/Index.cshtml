@@ -18,6 +18,7 @@
             <thead class="text-center">
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.Cod)</th>
                     <th>@Html.DisplayNameFor(model => model.Providers.CorporateName)</th>
                     <th>@Html.DisplayNameFor(model => model.PurchDate)</th>
                     <th>@Html.DisplayNameFor(model => model.PriceOrder)</th>
@@ -28,6 +29,7 @@
                 <tbody class="text-center">
                     <tr>
                         <td>@Html.DisplayFor(model => purchaseOrder.Id)</td>
+                        <td>@Html.DisplayFor(model => purchaseOrder.Cod)</td>
                         <td>@Html.DisplayFor(model => purchaseOrder.Providers.CorporateName)</td>
                         <td>@Html.DisplayFor(model => purchaseOrder.PurchDate)</td>
                         <td>@Html.DisplayFor(model => purchaseOrder.PriceOrder)</td>

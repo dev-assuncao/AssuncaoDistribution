@@ -15,7 +15,8 @@ namespace AssuncaoDistribution.Data
         public DbSet<Products> Products { get; set; }
         public DbSet<Provider> Providers { get; set; }
         public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
-        public DbSet<PurchaseOrderItems> PurchaseOrderItems { get; set; }
+        public DbSet<PurchaseOrderItem> PurchaseOrderItems { get; set; }
         public DbSet<SalesOrder> SalesOrders { get; set; }
+
     }
 }
